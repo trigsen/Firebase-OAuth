@@ -3,14 +3,18 @@ import { Router } from '@/Routes.jsx';
 import './App.css';
 import { Provider } from 'react-redux';
 import store from '@/store';
-import BgImage from '@/components/blocks/BgImage/BgImage.jsx';
+import BgImage from '@/components/blocks/BgImage/BgImage';
+import theme from '@/theme/theme';
+import { ThemeProvider } from 'styled-components';
 
 function App() {
   return (
     <Provider store={store}>
-      <BgImage>
-        <Router />
-      </BgImage>
+      <ThemeProvider theme={theme}>
+        <BgImage>
+          <Router />
+        </BgImage>
+      </ThemeProvider>
     </Provider>
   );
 }
