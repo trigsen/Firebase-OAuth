@@ -35,11 +35,17 @@ function Calendar({ context }) {
 }
 
 Calendar.defaultProps = {
-  context: {},
+  context: {
+    hourStorage: {},
+    addHour: () => {},
+  },
 };
 
 Calendar.propTypes = {
-  context: PropTypes.object,
+  context: PropTypes.shape({
+    hourStorage: PropTypes.shape({}),
+    addHour: PropTypes.func,
+  }),
 };
 
 export default Calendar;

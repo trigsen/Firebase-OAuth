@@ -25,7 +25,7 @@ export const HourWrap = styled.div`
 
     return theme.colors.white;
   }};
-  color: ${({ num, theme }) => ((num <= 4 || num >= 8) ? theme.colors.white : theme.colors.black)} !important;
+  color: ${({ num, theme }) => (num <= 4 || num >= 8 ? theme.colors.white : theme.colors.black)} !important;
   border-radius: 5px;
   margin-top: 5px;
 `;

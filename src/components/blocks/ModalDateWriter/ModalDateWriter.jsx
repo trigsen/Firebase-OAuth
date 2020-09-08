@@ -47,11 +47,17 @@ function ModalDateWriter({ context }) {
 }
 
 ModalDateWriter.defaultProps = {
-  context: {}
+  context: {
+    hourStorage: {},
+    addHour: () => {},
+  },
 };
 
 ModalDateWriter.propTypes = {
-  context: PropTypes.object,
+  context: PropTypes.shape({
+    hourStorage: PropTypes.shape({}),
+    addHour: PropTypes.func,
+  }),
 };
 
 export default ModalDateWriter;
