@@ -28,7 +28,7 @@ export const ItemWrapper = styled.div`
 export const Input = styled.input`
   width: 100%;
   background: transparent;
-  border: 2px solid #eee;
+  border: 2px solid ${props => props.theme.colors.whiteSmoke};
   box-shadow: 0 0 15px 4px rgba(0, 0, 0, 0.06);
   border-radius: 10px;
   padding-left: 10px;
@@ -40,7 +40,7 @@ export const Label = styled.label`
   transition: color 0.5s;
 
   &:hover {
-    color: #0f0f6d;
+    color: ${props => props.theme.colors.persianIndigo};
   }
 `;
 
@@ -59,8 +59,8 @@ export const ButtonsWrapper = styled.div`
 `;
 
 export const Button = styled.button`
-  background: #0f0f6d;
-  color: #ffffff;
+  background: ${props => props.theme.colors.persianIndigo};
+  color: ${props => props.theme.colors.white};
   cursor: pointer;
   font-size: 1rem;
   padding: 10px 20px;
@@ -75,6 +75,6 @@ export const Button = styled.button`
     background: #2b2bff;
     transition: all 0.5s;
     border-radius: 10px;
-    box-shadow: 0px 6px 15px #0000ff61;
+    box-shadow: 0px 6px 15px rgba(0, 0, 255, 0.64);
   }
 `;

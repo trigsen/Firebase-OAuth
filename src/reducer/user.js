@@ -15,7 +15,7 @@ const initialState = {
   request: false,
   error: '',
   data: localStorage.getItem(USER_LOCAL_STORAGE)
-    ? localStorage.getItem(USER_LOCAL_STORAGE)
+    ? JSON.parse(localStorage.getItem(USER_LOCAL_STORAGE))
     : '',
 };
 
