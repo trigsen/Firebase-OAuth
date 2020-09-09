@@ -1,8 +1,9 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { userSignout } from '@/action';
-import PrimaryButton from '@/components/controls/PrimaryButton/PrimaryButton';
-import { Typography, Row, Col } from 'antd';
+import { userSignout } from '@/store/action';
+import {
+  Typography, Row, Col, Button,
+} from 'antd';
 
 import { Wrapper } from './styles';
 
@@ -29,7 +30,9 @@ function Header() {
           </Title>
         </Col>
         <Col md={8} xs={24}>
-          <PrimaryButton onClick={signOut}>Sign out</PrimaryButton>
+          <Button type="primary" onClick={signOut} block>
+            Sign out
+          </Button>
         </Col>
       </Row>
     </Wrapper>

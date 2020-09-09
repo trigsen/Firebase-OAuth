@@ -6,7 +6,7 @@ import {
   USER_LOCAL_STORAGE,
 } from '@/constants';
 import { history } from '@/Routes.jsx';
-import firebase from '../firebase-config';
+import firebase from '@/firebase-config';
 
 export const userSignupReq = () => ({
   type: USER_SIGNUP_REQUEST,

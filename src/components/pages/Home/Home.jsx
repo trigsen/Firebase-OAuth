@@ -3,9 +3,8 @@ import Header from '@/components/blocks/Header/Header';
 import Calendar from '@/components/blocks/Calendar/Calendar';
 import ModalDateWriter from '@/components/blocks/ModalDateWriter/ModalDateWriter';
 import { Row, Col } from 'antd';
+import { Context } from '@/context';
 import { HomeWrapper } from './styles';
-
-const Context = React.createContext(null);
 
 function Home() {
   const [hoursStorage, setHour] = useState({});
@@ -24,11 +23,11 @@ function Home() {
           </Col>
 
           <Col span={24}>
-            <ModalDateWriter context={Context} />
+            <ModalDateWriter />
           </Col>
 
           <Col span={24}>
-            <Calendar context={Context} />
+            <Calendar />
           </Col>
         </Row>
       </HomeWrapper>

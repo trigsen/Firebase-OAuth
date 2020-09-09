@@ -1,10 +1,10 @@
 import React, { useContext } from 'react';
 import { Calendar as Cal } from 'antd';
-import PropTypes from 'prop-types';
+import { Context } from '@/context';
 import { Hour, HourWrap } from './styles';
 
-function Calendar({ context }) {
-  const { hoursStorage } = useContext(context);
+function Calendar() {
+  const { hoursStorage } = useContext(Context);
   const keysStorage = Object.entries(hoursStorage);
 
   const dateCellRender = value => {
@@ -33,19 +33,5 @@ function Calendar({ context }) {
 
   return <Cal fullscreen={false} dateCellRender={dateCellRender} />;
 }
-
-Calendar.defaultProps = {
-  context: {
-    hourStorage: {},
-    addHour: () => {},
-  },
-};
-
-Calendar.propTypes = {
-  context: PropTypes.shape({
-    hourStorage: PropTypes.shape({}),
-    addHour: PropTypes.func,
-  }),
-};
 
 export default Calendar;

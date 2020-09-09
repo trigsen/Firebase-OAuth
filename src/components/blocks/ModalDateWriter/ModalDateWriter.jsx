@@ -1,18 +1,17 @@
 import React, { useState, useContext } from 'react';
 import {
-  Modal, DatePicker, Select, Space,
+  Modal, DatePicker, Select, Space, Button,
 } from 'antd';
-import PrimaryButton from '@/components/controls/PrimaryButton/PrimaryButton';
-import PropTypes from 'prop-types';
+import { Context } from '@/context';
 import { ModalWrapper } from './styles';
 
 const { Option } = Select;
 
-function ModalDateWriter({ context }) {
+function ModalDateWriter() {
   const [visible, setVisible] = useState(false);
   const [hour, setHour] = useState(null);
   const [date, setDate] = useState(null);
-  const { addHour } = useContext(context);
+  const { addHour } = useContext(Context);
   const hours = [...Array(24).keys()];
 
   const showModal = () => setVisible(true);
@@ -29,7 +28,9 @@ function ModalDateWriter({ context }) {
 
   return (
     <ModalWrapper>
-      <PrimaryButton onClick={showModal}>Add new information</PrimaryButton>
+      <Button type="primary" block onClick={showModal}>
+        Add new information
+      </Button>
       <Modal title="" visible={visible} onOk={handleOk} onCancel={handleCancel}>
         <Space align="center">
           <DatePicker onChange={handleDatePickerChange} />
@@ -45,19 +46,5 @@ function ModalDateWriter({ context }) {
     </ModalWrapper>
   );
 }
-
-ModalDateWriter.defaultProps = {
-  context: {
-    hourStorage: {},
-    addHour: () => {},
-  },
-};
-
-ModalDateWriter.propTypes = {
-  context: PropTypes.shape({
-    hourStorage: PropTypes.shape({}),
-    addHour: PropTypes.func,
-  }),
-};
 
 export default ModalDateWriter;

@@ -7,5 +7,6 @@ export default {
     black: '#000000',
     whiteSmoke: '#eeeeee',
     persianIndigo: '#0F0F6D',
+    errorMsg: '#cc0033',
   },
 };

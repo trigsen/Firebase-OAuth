@@ -1,74 +1,63 @@
 import React from 'react';
-import { useFormik } from 'formik';
+import { Formik, Form, Field } from 'formik';
 import { useDispatch } from 'react-redux';
-import { userLogin } from '@/action';
+import { userLogin } from '@/store/action';
+import { Button } from 'antd';
 
 import { Link } from 'react-router-dom';
+import { createLabelWithInput } from '@/components/blocks/Label/Label';
 
 import * as Yup from 'yup';
-import {
-  FormWrapper,
-  Form,
-  Input,
-  Label,
-  ItemWrapper,
-  Button,
-  ErrorMsg,
-  ButtonsWrapper,
-} from '../styles';
+import { FormWrapper, InnerWrap, ButtonsWrapper } from '../styles';
 
 function LogInForm() {
   const dispatch = useDispatch();
 
-  const formik = useFormik({
-    initialValues: {
-      email: '',
-      password: '',
-    },
-    validationSchema: Yup.object({
-      email: Yup.string()
-        .email('Invalid email address')
-        .required('Email is required'),
-      password: Yup.string()
-        .matches(/[a-zA-Z]/, 'Password should contain Latin letters')
-        .min(8, 'Password is short - should be 8 chars minimum')
-        .required('Password is required'),
-    }),
-    onSubmit: values => {
-      dispatch(userLogin(values.email, values.password));
-    },
+  const schema = Yup.object({
+    email: Yup.string()
+      .email('Invalid email address')
+      .required('Email is required'),
+    password: Yup.string()
+      .matches(/[a-zA-Z]/, 'Password should contain Latin letters')
+      .min(8, 'Password is short - should be 8 chars minimum')
+      .required('Password is required'),
   });
 
   return (
-    <FormWrapper>
-      <Form onSubmit={formik.handleSubmit}>
-        <ItemWrapper>
-          <Label htmlFor="email">Email</Label>
-          <Input type="text" id="email" {...formik.getFieldProps('email')} />
-          {formik.touched.email && formik.errors.email ? (
-            <ErrorMsg>{formik.errors.email}</ErrorMsg>
-          ) : null}
-        </ItemWrapper>
-        <ItemWrapper>
-          <Label htmlFor="password">Password</Label>
-          <Input
-            type="password"
-            id="password"
-            {...formik.getFieldProps('password')} />
-          {formik.touched.password && formik.errors.password ? (
-            <ErrorMsg>{formik.errors.password}</ErrorMsg>
-          ) : null}
-        </ItemWrapper>
-        <ButtonsWrapper>
-          <Button type="submit" htmlFor="submit" name="login">
-            Log In
-          </Button>
-          <Link to="/signup">
-            <Button>Sign up</Button>
-          </Link>
-        </ButtonsWrapper>
-      </Form>
-    </FormWrapper>
+    <Formik
+      initialValues={{ email: '', password: '' }}
+      validationSchema={schema}
+      onSubmit={values => dispatch(userLogin(values.email, values.password))}
+    >
+      <FormWrapper>
+        <Form>
+          <InnerWrap>
+            <Field id="email" name="email">
+              {createLabelWithInput({
+                labelName: 'Email',
+                inputType: 'text',
+              })}
+            </Field>
+
+            <Field id="password" name="password">
+              {createLabelWithInput({
+                labelName: 'Password',
+                inputType: 'password',
+              })}
+            </Field>
+
+            <ButtonsWrapper>
+              <Button type="primary" htmlType="submit" name="login">
+                Log In
+              </Button>
+              <Link to="/signup">
+                <Button type="primary">Sign up</Button>
+              </Link>
+            </ButtonsWrapper>
+          </InnerWrap>
+        </Form>
+      </FormWrapper>
+    </Formik>
   );
 }
 
