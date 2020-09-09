@@ -1,8 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Input } from 'antd';
+import { Input, Row, Col } from 'antd';
 import ErrorMsg from '@/components/blocks/ErrorMsg/ErrorMsg';
-import { Label as Lab, ItemWrapper, ErrorWrap } from './styles';
+import { Label as Lab, ErrorWrap, LabelWrap } from './styles';
 
 export function Label({ children, ...props }) {
   return <Lab {...props}>{children}</Lab>;
@@ -14,20 +14,29 @@ export const createLabelWithInput = ({ inputType, labelName }) => {
     form: { errors, touched },
     ...rest
   }) => (
-    <ItemWrapper>
-      <Label htmlFor={name}>{labelName}</Label>
-      <Input
-        type={inputType}
-        {...rest}
-        {...fieldProps}
-        placeholder={name}
-        autoComplete="on" />
+    <Row gutter={[8, 16]} align="middle">
+      <Col sm={6} xs={8}>
+        <LabelWrap>
+          <Label htmlFor={name}>{labelName}</Label>
+        </LabelWrap>
+      </Col>
+      <Col sm={12} xs={16}>
+        <Input
+          type={inputType}
+          {...rest}
+          {...fieldProps}
+          name={name}
+          placeholder={name}
+          autoComplete="on" />
+      </Col>
       {touched[name] && errors[name] ? (
-        <ErrorWrap>
-          <ErrorMsg>{errors[name]}</ErrorMsg>
-        </ErrorWrap>
+        <Col xs={{ span: 24, offset: 8 }} sm={{ span: 24, offset: 6 }}>
+          <ErrorWrap>
+            <ErrorMsg>{errors[name]}</ErrorMsg>
+          </ErrorWrap>
+        </Col>
       ) : null}
-    </ItemWrapper>
+    </Row>
   );
 
   LabelWithInput.propTypes = {
