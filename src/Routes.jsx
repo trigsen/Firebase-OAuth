@@ -11,6 +11,7 @@ import LogInForm from '@/components/forms/AuthForm/LogInForm/LogInForm';
 import SignUpForm from '@/components/forms/AuthForm/SignUpForm/SignUpForm';
 import PrivateRoute from '@/components/routes/PrivateRoute/PrivateRoute';
 import AuthRoute from '@/components/routes/AuthRoute/AuthRoute';
+import NotFoundRoute from '@/components/routes/NotFoundRoute/NotFoundRoute';
 
 export const history = createBrowserHistory();
 
@@ -21,6 +22,7 @@ export function Router() {
         <PrivateRoute exact path={CALENDAR_PAGE_PATH} component={Home} />
         <AuthRoute path={LOGIN_PAGE_PATH} component={LogInForm} />
         <AuthRoute path={SIGNUP_PAGE_PATH} component={SignUpForm} />
+        <NotFoundRoute path="*" />
       </Switch>
     </BrowRouter>
   );
