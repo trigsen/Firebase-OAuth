@@ -1,0 +1,40 @@
+{
+  "en": {
+    "logIn": "Sign in",
+    "signUp": "Sign up",
+    "signOut": "Sign out",
+    "addNewInf": "Add new information",
+    "email": "Email",
+    "password": "Password",
+    "firstName": "First name",
+    "lastName": "Last name",
+    "russian": "Russian",
+    "english": "English",
+    "error.email.invalid": "Invalid email address",
+    "error.email.required": "Email is required",
+    "error.password.invalid": "Password should contain Latin letters",
+    "error.password.required": "Password is required",
+    "error.password.short": "Password is short - should be 8 chars minimum",
+    "error.firstName.invalid": "First name should contain 3 or more letters",
+    "error.lastName.invalid": "Last name should contain 3 or more letters"
+  },
+  "ru": {
+    "logIn": "Войти",
+    "signUp": "Регистрация",
+    "signOut": "Выйти",
+    "addNewInf": "Добавить новую информацию",
+    "email": "Почта",
+    "password": "Пароль",
+    "firstName": "Имя",
+    "lastName": "Фамилия",
+    "russian": "Русский",
+    "english": "Английский",
+    "error.email.invalid": "Почта введена неправильно",
+    "error.email.required": "Почта обязательна для заполнения",
+    "error.password.invalid": "Пароль должен содержать латинские буквы",
+    "error.password.required": "Пароль обязателен для заполнения",
+    "error.password.short": "Короткий пароль - должно быть как минимум 8 символов",
+    "error.firstName.invalid": "Имя должно содержать как минимум 3 буквы",
+    "error.lastName.invalid": "Фамилия должна содержать как минимум 3 буквы"
+  }
+}

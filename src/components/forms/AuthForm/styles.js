@@ -11,9 +11,3 @@ export const InnerWrap = styled.div`
   display: flex;
   flex-direction: column;
 `;
-
-export const ButtonsWrapper = styled.div`
-  display: flex;
-  justify-content: space-around;
-  margin-top: 25px;
-`;

@@ -3,6 +3,7 @@ import {
   Modal, DatePicker, Select, Space, Button,
 } from 'antd';
 import { Context } from '@/context';
+import { FormattedMessage } from 'react-intl';
 import { ModalWrapper } from './styles';
 
 const { Option } = Select;
@@ -29,7 +30,7 @@ function ModalDateWriter() {
   return (
     <ModalWrapper>
       <Button type="primary" block onClick={showModal}>
-        Add new information
+        <FormattedMessage id="addNewInf" />
       </Button>
       <Modal title="" visible={visible} onOk={handleOk} onCancel={handleCancel}>
         <Space align="center">

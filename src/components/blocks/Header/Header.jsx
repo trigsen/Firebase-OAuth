@@ -4,8 +4,9 @@ import { userSignout } from '@/store/action';
 import {
   Typography, Row, Col, Button,
 } from 'antd';
-
-import { Wrapper } from './styles';
+import LangSelect from '@/components/blocks/LangSelect/LangSelect';
+import { FormattedMessage } from 'react-intl';
+import { Wrapper, LangWrap } from './styles';
 
 function Header() {
   const dispatch = useDispatch();
@@ -18,7 +19,7 @@ function Header() {
 
   return (
     <Wrapper>
-      <Row justify="space-between" align="center">
+      <Row justify="space-between" align="center" gutter={[8, 8]}>
         <Col md={8} xs={24}>
           <Title level={3} style={{ textAlign: 'center' }}>
             Company
@@ -29,10 +30,19 @@ function Header() {
             {email}
           </Title>
         </Col>
-        <Col md={8} xs={24}>
-          <Button type="primary" onClick={signOut} block>
-            Sign out
-          </Button>
+        <Col md={4} xs={24}>
+          <Row justify="center" align="middle" gutter={[16, 0]}>
+            <Col span={12}>
+              <Button type="primary" onClick={signOut} block>
+                <FormattedMessage id="signOut" />
+              </Button>
+            </Col>
+            <Col span={12}>
+              <LangWrap>
+                <LangSelect />
+              </LangWrap>
+            </Col>
+          </Row>
         </Col>
       </Row>
     </Wrapper>

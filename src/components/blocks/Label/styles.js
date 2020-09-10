@@ -11,10 +11,5 @@ export const Label = styled.label`
 `;
 
 export const ErrorWrap = styled.div`
-  grid-column-start: 2;
-  text-align: left !important;
-`;
-
-export const LabelWrap = styled.div`
-  text-align: right;
+  text-align: center !important;
 `;

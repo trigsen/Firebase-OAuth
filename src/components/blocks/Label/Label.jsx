@@ -2,35 +2,37 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Input, Row, Col } from 'antd';
 import ErrorMsg from '@/components/blocks/ErrorMsg/ErrorMsg';
-import { Label as Lab, ErrorWrap, LabelWrap } from './styles';
+import { FormattedMessage } from 'react-intl';
+import { Label as Lab, ErrorWrap } from './styles';
 
 export function Label({ children, ...props }) {
   return <Lab {...props}>{children}</Lab>;
 }
 
-export const createLabelWithInput = ({ inputType, labelName }) => {
+export const createLabelWithInput = ({ inputType, id, localeId }) => {
   const LabelWithInput = ({
     field: { name, ...fieldProps },
     form: { errors, touched },
     ...rest
   }) => (
     <Row gutter={[8, 16]} align="middle">
-      <Col sm={6} xs={8}>
-        <LabelWrap>
-          <Label htmlFor={name}>{labelName}</Label>
-        </LabelWrap>
+      <Col md={4} xs={8}>
+        <Label htmlFor={id}>
+          <FormattedMessage id={localeId} />
+        </Label>
       </Col>
-      <Col sm={12} xs={16}>
+      <Col md={20} xs={16}>
         <Input
           type={inputType}
           {...rest}
           {...fieldProps}
           name={name}
-          placeholder={name}
+          id={id}
+          size="small"
           autoComplete="on" />
       </Col>
       {touched[name] && errors[name] ? (
-        <Col xs={{ span: 24, offset: 8 }} sm={{ span: 24, offset: 6 }}>
+        <Col md={{ span: 20, offset: 4 }} xs={{ span: 24 }}>
           <ErrorWrap>
             <ErrorMsg>{errors[name]}</ErrorMsg>
           </ErrorWrap>
@@ -61,6 +63,8 @@ createLabelWithInput.defaultProps = {
 createLabelWithInput.propTypes = {
   labelName: PropTypes.string,
   inputType: PropTypes.string,
+  localeId: PropTypes.string,
+  id: PropTypes.string,
 };
 
 Label.defaultProps = {
@@ -68,5 +72,5 @@ Label.defaultProps = {
 };
 
 Label.propTypes = {
-  children: PropTypes.string,
+  children: PropTypes.oneOfType([PropTypes.string, PropTypes.element]),
 };

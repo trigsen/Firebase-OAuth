@@ -2,15 +2,15 @@ import React from 'react';
 import { Form, Formik, Field } from 'formik';
 import { useDispatch } from 'react-redux';
 import { userSignup } from '@/store/action';
-import { Button } from 'antd';
-
+import { Button, Row, Col } from 'antd';
 import { Link } from 'react-router-dom';
 import { createLabelWithInput } from '@/components/blocks/Label/Label';
-
 import * as Yup from 'yup';
-import { FormWrapper, InnerWrap, ButtonsWrapper } from '../styles';
+import { FormattedMessage, injectIntl } from 'react-intl';
+import PropTypes from 'prop-types';
+import { FormWrapper, InnerWrap } from '../styles';
 
-function SignUpForm() {
+function SignUpForm({ intl }) {
   const dispatch = useDispatch();
 
   const initValues = {
@@ -22,17 +22,20 @@ function SignUpForm() {
 
   const schema = Yup.object({
     email: Yup.string()
-      .email('Invalid email address')
-      .required('Email is required'),
+      .email(intl.formatMessage({ id: 'error.email.invalid' }))
+      .required(intl.formatMessage({ id: 'error.email.required' })),
     password: Yup.string()
-      .matches(/[a-zA-Z]/, 'Password should contain Latin letters')
-      .min(8, 'Password is short - should be 8 chars minimum')
-      .required('Password is required'),
+      .matches(/[a-zA-Z]/, intl.formatMessage({ id: 'error.password.invalid' }))
+      .min(8, intl.formatMessage({ id: 'error.password.short' }))
+      .required(intl.formatMessage({ id: 'error.password.required' })),
     firstName: Yup.string().min(
       3,
-      'First name should contain 3 or more letters',
+      intl.formatMessage({ id: 'error.firstName.invalid' }),
     ),
-    lastName: Yup.string().min(3, 'Last name should contain 3 or more letters'),
+    lastName: Yup.string().min(
+      3,
+      intl.formatMessage({ id: 'error.lastName.invalid' }),
+    ),
   });
 
   return (
@@ -55,6 +58,8 @@ function SignUpForm() {
               {createLabelWithInput({
                 labelName: 'Email',
                 inputType: 'text',
+                localeId: 'email',
+                id: 'email',
               })}
             </Field>
 
@@ -62,6 +67,8 @@ function SignUpForm() {
               {createLabelWithInput({
                 labelName: 'Password',
                 inputType: 'password',
+                localeId: 'password',
+                id: 'password',
               })}
             </Field>
 
@@ -69,6 +76,8 @@ function SignUpForm() {
               {createLabelWithInput({
                 labelName: 'First name',
                 inputType: 'text',
+                localeId: 'firstName',
+                id: 'firstName',
               })}
             </Field>
 
@@ -76,16 +85,29 @@ function SignUpForm() {
               {createLabelWithInput({
                 labelName: 'Last name',
                 inputType: 'text',
+                localeId: 'lastName',
+                id: 'lastName',
               })}
             </Field>
-            <ButtonsWrapper>
-              <Link to="/login">
-                <Button type="primary">Log In</Button>
-              </Link>
-              <Button type="primary" htmlType="submit" name="login">
-                Sign up
-              </Button>
-            </ButtonsWrapper>
+            <Row
+              justify="center"
+              align="middle"
+              gutter={[0, 16]}
+              style={{ textAlign: 'center' }}
+            >
+              <Col sm={12} xs={24}>
+                <Link to="/login">
+                  <Button type="primary">
+                    <FormattedMessage id="logIn" />
+                  </Button>
+                </Link>
+              </Col>
+              <Col sm={12} xs={24}>
+                <Button type="primary" htmlType="submit" name="login">
+                  <FormattedMessage id="signUp" />
+                </Button>
+              </Col>
+            </Row>
           </InnerWrap>
         </Form>
       </FormWrapper>
@@ -93,4 +115,10 @@ function SignUpForm() {
   );
 }
 
-export default SignUpForm;
+SignUpForm.propTypes = {
+  intl: PropTypes.shape({
+    formatMessage: PropTypes.func.isRequired,
+  }).isRequired,
+};
+
+export default injectIntl(SignUpForm);

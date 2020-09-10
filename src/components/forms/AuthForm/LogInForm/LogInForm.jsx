@@ -2,25 +2,24 @@ import React from 'react';
 import { Formik, Form, Field } from 'formik';
 import { useDispatch } from 'react-redux';
 import { userLogin } from '@/store/action';
-import { Button } from 'antd';
-
+import { Button, Row, Col } from 'antd';
 import { Link } from 'react-router-dom';
 import { createLabelWithInput } from '@/components/blocks/Label/Label';
-
 import * as Yup from 'yup';
-import { FormWrapper, InnerWrap, ButtonsWrapper } from '../styles';
+import { FormattedMessage, injectIntl } from 'react-intl';
+import PropTypes from 'prop-types';
+import { FormWrapper, InnerWrap } from '../styles';
 
-function LogInForm() {
+function LogInForm({ intl }) {
   const dispatch = useDispatch();
-
   const schema = Yup.object({
     email: Yup.string()
-      .email('Invalid email address')
-      .required('Email is required'),
+      .email(intl.formatMessage({ id: 'error.email.invalid' }))
+      .required(intl.formatMessage({ id: 'error.email.required' })),
     password: Yup.string()
-      .matches(/[a-zA-Z]/, 'Password should contain Latin letters')
-      .min(8, 'Password is short - should be 8 chars minimum')
-      .required('Password is required'),
+      .matches(/[a-zA-Z]/, intl.formatMessage({ id: 'error.password.invalid' }))
+      .min(8, intl.formatMessage({ id: 'error.password.short' }))
+      .required(intl.formatMessage({ id: 'error.password.required' })),
   });
 
   return (
@@ -36,6 +35,8 @@ function LogInForm() {
               {createLabelWithInput({
                 labelName: 'Email',
                 inputType: 'text',
+                localeId: 'email',
+                id: 'email',
               })}
             </Field>
 
@@ -43,17 +44,30 @@ function LogInForm() {
               {createLabelWithInput({
                 labelName: 'Password',
                 inputType: 'password',
+                localeId: 'password',
+                id: 'password',
               })}
             </Field>
 
-            <ButtonsWrapper>
-              <Button type="primary" htmlType="submit" name="login">
-                Log In
-              </Button>
-              <Link to="/signup">
-                <Button type="primary">Sign up</Button>
-              </Link>
-            </ButtonsWrapper>
+            <Row
+              justify="center"
+              align="middle"
+              gutter={[0, 16]}
+              style={{ textAlign: 'center' }}
+            >
+              <Col sm={12} xs={24}>
+                <Button type="primary" htmlType="submit" name="login">
+                  <FormattedMessage id="logIn" />
+                </Button>
+              </Col>
+              <Col sm={12} xs={24}>
+                <Link to="/signup">
+                  <Button type="primary">
+                    <FormattedMessage id="signUp" />
+                  </Button>
+                </Link>
+              </Col>
+            </Row>
           </InnerWrap>
         </Form>
       </FormWrapper>
@@ -61,4 +75,10 @@ function LogInForm() {
   );
 }
 
-export default LogInForm;
+LogInForm.propTypes = {
+  intl: PropTypes.shape({
+    formatMessage: PropTypes.func.isRequired,
+  }).isRequired,
+};
+
+export default injectIntl(LogInForm);

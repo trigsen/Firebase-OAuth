@@ -6,19 +6,18 @@ import store from '@/store/store';
 import BgImage from '@/components/blocks/BgImage/BgImage';
 import theme from '@/theme/theme';
 import { ThemeProvider } from 'styled-components';
-import { ConfigProvider } from 'antd';
-import enUS from 'antd/es/locale/en_US';
+import IntlProviderWrap from '@/components/wrappers/IntlProviderWrap/IntlProviderWrap';
 
 function App() {
   return (
     <Provider store={store}>
-      <ConfigProvider locale={enUS}>
+      <IntlProviderWrap>
         <ThemeProvider theme={theme}>
           <BgImage>
             <Router />
           </BgImage>
         </ThemeProvider>
-      </ConfigProvider>
+      </IntlProviderWrap>
     </Provider>
   );
 }
