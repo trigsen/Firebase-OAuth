@@ -16,7 +16,9 @@
     "error.password.required": "Password is required",
     "error.password.short": "Password is short - should be 8 chars minimum",
     "error.firstName.invalid": "First name should contain 3 or more letters",
-    "error.lastName.invalid": "Last name should contain 3 or more letters"
+    "error.lastName.invalid": "Last name should contain 3 or more letters",
+    "modal.cancel": "Cancel",
+    "datepicker.placholder": "Select date"
   },
   "ru": {
     "logIn": "Войти",
@@ -35,6 +37,8 @@
     "error.password.required": "Пароль обязателен для заполнения",
     "error.password.short": "Короткий пароль - должно быть как минимум 8 символов",
     "error.firstName.invalid": "Имя должно содержать как минимум 3 буквы",
-    "error.lastName.invalid": "Фамилия должна содержать как минимум 3 буквы"
+    "error.lastName.invalid": "Фамилия должна содержать как минимум 3 буквы",
+    "modal.cancel": "Отмена",
+    "datepicker.placholder": "Выберите дату"
   }
 }

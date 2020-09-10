@@ -3,12 +3,13 @@ import {
   Modal, DatePicker, Select, Space, Button,
 } from 'antd';
 import { Context } from '@/context';
-import { FormattedMessage } from 'react-intl';
+import { FormattedMessage, injectIntl } from 'react-intl';
+import PropTypes from 'prop-types';
 import { ModalWrapper } from './styles';
 
 const { Option } = Select;
 
-function ModalDateWriter() {
+function ModalDateWriter({ intl }) {
   const [visible, setVisible] = useState(false);
   const [hour, setHour] = useState(null);
   const [date, setDate] = useState(null);
@@ -32,9 +33,17 @@ function ModalDateWriter() {
       <Button type="primary" block onClick={showModal}>
         <FormattedMessage id="addNewInf" />
       </Button>
-      <Modal title="" visible={visible} onOk={handleOk} onCancel={handleCancel}>
+      <Modal
+        title=""
+        cancelText={intl.formatMessage({ id: 'modal.cancel' })}
+        visible={visible}
+        onOk={handleOk}
+        onCancel={handleCancel}
+      >
         <Space align="center">
-          <DatePicker onChange={handleDatePickerChange} />
+          <DatePicker
+            placeholder={intl.formatMessage({ id: 'datepicker.placholder' })}
+            onChange={handleDatePickerChange} />
           <Select onChange={handleSelectorChange}>
             {hours.map(value => (
               <Option key={new Date().getTime() + value} value={value}>
@@ -48,4 +57,10 @@ function ModalDateWriter() {
   );
 }
 
-export default ModalDateWriter;
+ModalDateWriter.propTypes = {
+  intl: PropTypes.shape({
+    formatMessage: PropTypes.func.isRequired,
+  }).isRequired,
+};
+
+export default injectIntl(ModalDateWriter);
