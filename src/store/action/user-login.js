@@ -4,6 +4,7 @@ import {
   USER_LOGIN_FAILURE,
   CALENDAR_PAGE_PATH,
   USER_LOCAL_STORAGE,
+  HOURS_TO_FILL_LOCAL_STORAGE,
 } from '@/constants';
 import firebase from '@/firebase-config';
 import { history } from '@/Routes.jsx';
@@ -32,6 +33,7 @@ export const userLogin = (email, password) => async dispatch => {
       USER_LOCAL_STORAGE,
       JSON.stringify(firebase.auth().currentUser),
     );
+    localStorage.setItem(HOURS_TO_FILL_LOCAL_STORAGE, JSON.stringify({}));
     history.push(CALENDAR_PAGE_PATH);
   } catch (error) {
     dispatch(userLoginFailure(error.message));

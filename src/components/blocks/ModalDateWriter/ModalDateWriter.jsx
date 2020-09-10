@@ -19,7 +19,8 @@ function ModalDateWriter({ intl }) {
   const showModal = () => setVisible(true);
   const handleOk = () => {
     if (hour >= 0 && !!date) {
-      addHour(date, hour);
+      const ISOStringDate = new Date(date).toISOString().substring(0, 10);
+      addHour(ISOStringDate, hour);
     }
     setVisible(false);
   };

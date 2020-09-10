@@ -1,23 +1,30 @@
 import React, { useContext } from 'react';
 import { Calendar as Cal } from 'antd';
 import { Context } from '@/context';
+import { HOURS_TO_FILL_LOCAL_STORAGE } from '@/constants';
 import { Hour, HourWrap } from './styles';
 
 function Calendar() {
   const { hoursStorage } = useContext(Context);
-  const keysStorage = Object.entries(hoursStorage);
+  let hoursLocalStorage = JSON.parse(
+    localStorage.getItem(HOURS_TO_FILL_LOCAL_STORAGE),
+  );
+  hoursLocalStorage = {
+    ...hoursLocalStorage,
+    ...hoursStorage,
+  };
+  localStorage.setItem(
+    HOURS_TO_FILL_LOCAL_STORAGE,
+    JSON.stringify(hoursLocalStorage),
+  );
+  const keysStorage = Object.entries(hoursLocalStorage);
 
   const dateCellRender = value => {
-    if (keysStorage.length === 0) {
-      return <HourWrap />;
-    }
-
     const hourToFill = Object.fromEntries(
       keysStorage.filter(keySet => {
-        const [date] = keySet;
+        const [ISOStringDate] = keySet;
         const dateCell = value.toDate().toISOString().substring(0, 10);
-        const markedDate = new Date(date).toISOString().substring(0, 10);
-        return dateCell === markedDate;
+        return dateCell === ISOStringDate;
       }),
     );
     const [hour] = Object.values(hourToFill);

@@ -4,6 +4,7 @@ import {
   USER_SIGNOUT_REQUEST,
   LOGIN_PAGE_PATH,
   USER_LOCAL_STORAGE,
+  HOURS_TO_FILL_LOCAL_STORAGE,
 } from '@/constants';
 
 import firebase from '@/firebase-config';
@@ -29,6 +30,7 @@ export const userSignout = () => async dispatch => {
     dispatch(userSignoutSuccess());
 
     localStorage.removeItem(USER_LOCAL_STORAGE);
+    localStorage.removeItem(HOURS_TO_FILL_LOCAL_STORAGE);
     history.push(LOGIN_PAGE_PATH);
   } catch (error) {
     dispatch(userSignoutFailure(error));
