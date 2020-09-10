@@ -19,7 +19,7 @@ function Header() {
 
   return (
     <Wrapper>
-      <Row justify="space-between" align="center" gutter={[8, 8]}>
+      <Row justify="space-around" align="center" gutter={[8, 8]}>
         <Col md={8} xs={24}>
           <Title level={3} style={{ textAlign: 'center' }}>
             Company
@@ -30,7 +30,7 @@ function Header() {
             {email}
           </Title>
         </Col>
-        <Col md={4} xs={24}>
+        <Col md={8} xs={24}>
           <Row justify="center" align="middle" gutter={[16, 0]}>
             <Col span={12}>
               <Button type="primary" onClick={signOut} block>
