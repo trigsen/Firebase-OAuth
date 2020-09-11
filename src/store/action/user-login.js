@@ -30,11 +30,8 @@ export const userLogin = (email, password) => async dispatch => {
     await firebase.auth().signInWithEmailAndPassword(email, password);
     dispatch(userLoginSuccess(firebase.auth().currentUser));
 
-    setItemToLocalStorage(
-      USER_LOCAL_STORAGE,
-      JSON.stringify(firebase.auth().currentUser),
-    );
-    setItemToLocalStorage(HOURS_TO_FILL_LOCAL_STORAGE, JSON.stringify({}));
+    setItemToLocalStorage(USER_LOCAL_STORAGE, firebase.auth().currentUser);
+    setItemToLocalStorage(HOURS_TO_FILL_LOCAL_STORAGE, {});
     history.push(CALENDAR_PAGE_PATH);
   } catch (error) {
     dispatch(userLoginFailure(error.message));
