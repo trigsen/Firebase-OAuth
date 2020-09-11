@@ -7,6 +7,7 @@ import {
 } from '@/constants';
 import { history } from '@/Routes.jsx';
 import firebase from '@/firebase-config';
+import { setItemToLocalStorage } from '@/helpers';
 
 export const userSignupReq = () => ({
   type: USER_SIGNUP_REQUEST,
@@ -31,7 +32,7 @@ export const userSignup = (email, password, firstName, lastName) => async dispat
     });
     dispatch(userSignupSuccess(firebase.auth().currentUser));
 
-    localStorage.setItem(
+    setItemToLocalStorage(
       USER_LOCAL_STORAGE,
       JSON.stringify(firebase.auth().currentUser),
     );

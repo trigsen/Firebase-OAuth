@@ -6,6 +6,7 @@ import {
   USER_LOCAL_STORAGE,
   HOURS_TO_FILL_LOCAL_STORAGE,
 } from '@/constants';
+import { removeItemFromLocalStorage } from '@/helpers';
 
 import firebase from '@/firebase-config';
 import { history } from '@/Routes.jsx';
@@ -29,8 +30,8 @@ export const userSignout = () => async dispatch => {
     await firebase.auth().signOut();
     dispatch(userSignoutSuccess());
 
-    localStorage.removeItem(USER_LOCAL_STORAGE);
-    localStorage.removeItem(HOURS_TO_FILL_LOCAL_STORAGE);
+    removeItemFromLocalStorage(USER_LOCAL_STORAGE);
+    removeItemFromLocalStorage(HOURS_TO_FILL_LOCAL_STORAGE);
     history.push(LOGIN_PAGE_PATH);
   } catch (error) {
     dispatch(userSignoutFailure(error));

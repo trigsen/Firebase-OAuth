@@ -8,6 +8,7 @@ import {
 } from '@/constants';
 import firebase from '@/firebase-config';
 import { history } from '@/Routes.jsx';
+import { setItemToLocalStorage } from '@/helpers';
 
 export const userLoginReq = () => ({
   type: USER_LOGIN_REQUEST,
@@ -29,11 +30,11 @@ export const userLogin = (email, password) => async dispatch => {
     await firebase.auth().signInWithEmailAndPassword(email, password);
     dispatch(userLoginSuccess(firebase.auth().currentUser));
 
-    localStorage.setItem(
+    setItemToLocalStorage(
       USER_LOCAL_STORAGE,
       JSON.stringify(firebase.auth().currentUser),
     );
-    localStorage.setItem(HOURS_TO_FILL_LOCAL_STORAGE, JSON.stringify({}));
+    setItemToLocalStorage(HOURS_TO_FILL_LOCAL_STORAGE, JSON.stringify({}));
     history.push(CALENDAR_PAGE_PATH);
   } catch (error) {
     dispatch(userLoginFailure(error.message));
