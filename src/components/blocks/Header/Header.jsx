@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { userSignout } from '@/store/action';
+import { userSignoutReq } from '@/store/action';
 import { Row, Col } from 'antd';
 import LangSelect from '@/components/blocks/LangSelect/LangSelect';
 import { FormattedMessage } from 'react-intl';
@@ -13,7 +13,7 @@ function Header() {
   const dispatch = useDispatch();
   const email = useSelector(getUserEmailSelector);
   const signOut = () => {
-    dispatch(userSignout());
+    dispatch(userSignoutReq());
   };
 
   const popupContainer = () => document.getElementById('popup-container');

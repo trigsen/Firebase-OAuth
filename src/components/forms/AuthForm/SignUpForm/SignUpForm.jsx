@@ -1,7 +1,7 @@
 import React from 'react';
 import { Form, Formik, Field } from 'formik';
 import { useDispatch } from 'react-redux';
-import { userSignup } from '@/store/action';
+import { userSignupReq } from '@/store/action';
 import { Row, Col } from 'antd';
 import { Link } from 'react-router-dom';
 import { createLabelWithInput } from '@/components/blocks/Label/Label';
@@ -44,7 +44,7 @@ function SignUpForm({ intl }) {
       initialValues={initValues}
       validationSchema={schema}
       onSubmit={values => dispatch(
-        userSignup(
+        userSignupReq(
           values.email,
           values.password,
           values.firstName,

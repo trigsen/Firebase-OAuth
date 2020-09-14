@@ -1,7 +1,7 @@
 import React from 'react';
 import { Formik, Form, Field } from 'formik';
 import { useDispatch } from 'react-redux';
-import { userLogin } from '@/store/action';
+import { userLoginReq } from '@/store/action';
 import { Row, Col } from 'antd';
 import { Link } from 'react-router-dom';
 import { createLabelWithInput } from '@/components/blocks/Label/Label';
@@ -27,7 +27,7 @@ function LogInForm({ intl }) {
     <Formik
       initialValues={{ email: '', password: '' }}
       validationSchema={schema}
-      onSubmit={values => dispatch(userLogin(values.email, values.password))}
+      onSubmit={values => dispatch(userLoginReq(values.email, values.password))}
     >
       <FormWrapper>
         <Form>
