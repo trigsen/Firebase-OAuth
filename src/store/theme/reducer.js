@@ -4,7 +4,7 @@ const initialState = {
   isDark: false,
 };
 
-const theme = (state = initialState, { type }) => {
+export const theme = (state = initialState, { type }) => {
   switch (type) {
     case SET_THEME:
       return {
@@ -17,5 +17,3 @@ const theme = (state = initialState, { type }) => {
       };
   }
 };
-
-export default theme;

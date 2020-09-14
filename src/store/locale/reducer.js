@@ -4,7 +4,7 @@ const initialState = {
   lang: EN_LANG,
 };
 
-const locale = (state = initialState, { type, payload }) => {
+export const locale = (state = initialState, { type, payload }) => {
   switch (type) {
     case SET_LOCALE:
       return {
@@ -17,5 +17,3 @@ const locale = (state = initialState, { type, payload }) => {
       };
   }
 };
-
-export default locale;

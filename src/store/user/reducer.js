@@ -19,7 +19,7 @@ const initialState = {
     : '',
 };
 
-const user = (state = initialState, { type, payload }) => {
+export const user = (state = initialState, { type, payload }) => {
   switch (type) {
     case USER_LOGIN_REQUEST:
     case USER_SIGNUP_REQUEST:
@@ -54,5 +54,3 @@ const user = (state = initialState, { type, payload }) => {
       return state;
   }
 };
-
-export default user;
