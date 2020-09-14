@@ -3,19 +3,25 @@ import { Context } from '@/context';
 import { HOURS_TO_FILL_LOCAL_STORAGE } from '@/constants';
 import { Hour, HourWrap, StyledCalendar } from './styles';
 
-function Calendar() {
-  const { hoursStorage } = useContext(Context);
-  let hoursLocalStorage = JSON.parse(
+const updateHoursLocalStorage = state => {
+  const prevState = JSON.parse(
     localStorage.getItem(HOURS_TO_FILL_LOCAL_STORAGE),
   );
-  hoursLocalStorage = {
-    ...hoursLocalStorage,
-    ...hoursStorage,
+  const updatedLocalStorage = {
+    ...prevState,
+    ...state,
   };
   localStorage.setItem(
     HOURS_TO_FILL_LOCAL_STORAGE,
-    JSON.stringify(hoursLocalStorage),
+    JSON.stringify(updatedLocalStorage),
   );
+
+  return updatedLocalStorage;
+};
+
+function Calendar() {
+  const { hoursStorage } = useContext(Context);
+  const hoursLocalStorage = updateHoursLocalStorage(hoursStorage);
   const keysStorage = Object.entries(hoursLocalStorage);
 
   const dateCellRender = value => {

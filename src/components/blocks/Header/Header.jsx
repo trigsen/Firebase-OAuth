@@ -6,13 +6,12 @@ import LangSelect from '@/components/blocks/LangSelect/LangSelect';
 import { FormattedMessage } from 'react-intl';
 import { ThemeSwitcherWrap, StyledButton } from '@/components/styles';
 import ThemeSwitcher from '@/components/blocks/ThemeSwitcher/ThemeSwitcher';
-
+import { getUserEmailSelector } from '@/store/reselect';
 import { Wrapper, LangWrap, StyledTitle } from './styles';
 
 function Header() {
   const dispatch = useDispatch();
-  const email = useSelector(state => state.user.data.email);
-
+  const email = useSelector(getUserEmailSelector);
   const signOut = () => {
     dispatch(userSignout());
   };

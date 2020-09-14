@@ -5,12 +5,13 @@ import { EN_LANG, RU_LANG } from '@/constants';
 import { useDispatch, useSelector } from 'react-redux';
 import { StyledSelect } from '@/components/styles';
 import PropTypes from 'prop-types';
+import { getLangSelector } from '@/store/reselect';
 
 const { Option } = Select;
 
 function LangSelector({ popupContainer }) {
   const dispatch = useDispatch();
-  const lang = useSelector(store => store.locale.lang);
+  const lang = useSelector(getLangSelector);
 
   const handleChange = value => {
     dispatch(setLocale(value));

@@ -3,9 +3,10 @@ import { IntlProvider } from 'react-intl';
 import messages from '@/internalization';
 import { useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
+import { getLangSelector } from '@/store/reselect';
 
 function IntlProviderWrap({ children }) {
-  const locale = useSelector(store => store.locale.lang);
+  const locale = useSelector(getLangSelector);
   return (
     <IntlProvider locale={locale} messages={messages[locale]}>
       {children}
