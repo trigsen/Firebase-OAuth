@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Input, Row, Col } from 'antd';
+import { Row, Col } from 'antd';
 import ErrorMsg from '@/components/blocks/ErrorMsg/ErrorMsg';
 import { FormattedMessage, injectIntl } from 'react-intl';
-import { Label as Lab, ErrorWrap } from './styles';
+import { StyledInput, Label as Lab, ErrorWrap } from './styles';
 
 export function Label({ children, ...props }) {
   return <Lab {...props}>{children}</Lab>;
@@ -23,7 +23,7 @@ export const createLabelWithInput = ({ inputType, id, localeId }) => {
         </Label>
       </Col>
       <Col md={20} xs={16}>
-        <Input
+        <StyledInput
           type={inputType}
           {...rest}
           {...fieldProps}

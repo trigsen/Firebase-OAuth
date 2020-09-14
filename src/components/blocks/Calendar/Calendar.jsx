@@ -1,8 +1,7 @@
 import React, { useContext } from 'react';
-import { Calendar as Cal } from 'antd';
 import { Context } from '@/context';
 import { HOURS_TO_FILL_LOCAL_STORAGE } from '@/constants';
-import { Hour, HourWrap } from './styles';
+import { Hour, HourWrap, StyledCalendar } from './styles';
 
 function Calendar() {
   const { hoursStorage } = useContext(Context);
@@ -38,7 +37,7 @@ function Calendar() {
     );
   };
 
-  return <Cal fullscreen={false} dateCellRender={dateCellRender} />;
+  return <StyledCalendar fullscreen={false} dateCellRender={dateCellRender} />;
 }
 
 export default Calendar;

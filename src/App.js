@@ -4,19 +4,18 @@ import './App.css';
 import { Provider } from 'react-redux';
 import store from '@/store/store';
 import BgImage from '@/components/blocks/BgImage/BgImage';
-import theme from '@/theme/theme';
-import { ThemeProvider } from 'styled-components';
+import DarkThemeProvider from '@/components/wrappers/DarkThemeProvider/DarkThemeProvider';
 import IntlProviderWrap from '@/components/wrappers/IntlProviderWrap/IntlProviderWrap';
 
 function App() {
   return (
     <Provider store={store}>
       <IntlProviderWrap>
-        <ThemeProvider theme={theme}>
+        <DarkThemeProvider>
           <BgImage>
             <Router />
           </BgImage>
-        </ThemeProvider>
+        </DarkThemeProvider>
       </IntlProviderWrap>
     </Provider>
   );

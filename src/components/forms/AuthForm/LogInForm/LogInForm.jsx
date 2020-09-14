@@ -2,12 +2,13 @@ import React from 'react';
 import { Formik, Form, Field } from 'formik';
 import { useDispatch } from 'react-redux';
 import { userLogin } from '@/store/action';
-import { Button, Row, Col } from 'antd';
+import { Row, Col } from 'antd';
 import { Link } from 'react-router-dom';
 import { createLabelWithInput } from '@/components/blocks/Label/Label';
 import * as Yup from 'yup';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import PropTypes from 'prop-types';
+import { StyledButton } from '@/components/styles';
 import { FormWrapper, InnerWrap } from '../styles';
 
 function LogInForm({ intl }) {
@@ -56,15 +57,15 @@ function LogInForm({ intl }) {
               style={{ textAlign: 'center' }}
             >
               <Col sm={12} xs={24}>
-                <Button type="primary" htmlType="submit" name="login">
+                <StyledButton type="dashed" htmlType="submit" name="login">
                   <FormattedMessage id="logIn" />
-                </Button>
+                </StyledButton>
               </Col>
               <Col sm={12} xs={24}>
                 <Link to="/signup">
-                  <Button type="primary">
+                  <StyledButton type="dashed">
                     <FormattedMessage id="signUp" />
-                  </Button>
+                  </StyledButton>
                 </Link>
               </Col>
             </Row>

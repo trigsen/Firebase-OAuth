@@ -21,11 +21,9 @@ function Home() {
           <Col span={24}>
             <Header />
           </Col>
-
           <Col span={24}>
             <ModalDateWriter />
           </Col>
-
           <Col span={24}>
             <Calendar />
           </Col>

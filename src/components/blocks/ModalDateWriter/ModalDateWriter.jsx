@@ -1,11 +1,10 @@
 import React, { useState, useContext } from 'react';
-import {
-  Modal, DatePicker, Select, Space, Button,
-} from 'antd';
+import { Select, Space } from 'antd';
 import { Context } from '@/context';
 import { FormattedMessage, injectIntl } from 'react-intl';
 import PropTypes from 'prop-types';
-import { ModalWrapper } from './styles';
+import { StyledButton, StyledSelect } from '@/components/styles';
+import { ModalWrapper, StyledModal, StyledDatePicker } from './styles';
 
 const { Option } = Select;
 
@@ -29,31 +28,38 @@ function ModalDateWriter({ intl }) {
   const handleDatePickerChange = value => setDate(value);
   const handleCancel = () => setVisible(false);
 
+  const popupContainer = () => document.getElementById('popup-container');
+
   return (
     <ModalWrapper>
-      <Button type="primary" block onClick={showModal}>
+      <StyledButton type="dashed" block onClick={showModal}>
         <FormattedMessage id="addNewInf" />
-      </Button>
-      <Modal
+      </StyledButton>
+      <StyledModal
         title=""
         cancelText={intl.formatMessage({ id: 'modal.cancel' })}
         visible={visible}
         onOk={handleOk}
         onCancel={handleCancel}
+        getContainer={popupContainer}
       >
         <Space align="center">
-          <DatePicker
+          <StyledDatePicker
             placeholder={intl.formatMessage({ id: 'datepicker.placholder' })}
-            onChange={handleDatePickerChange} />
-          <Select onChange={handleSelectorChange}>
+            onChange={handleDatePickerChange}
+            getPopupContainer={popupContainer} />
+          <StyledSelect
+            onChange={handleSelectorChange}
+            getPopupContainer={popupContainer}
+          >
             {hours.map(value => (
               <Option key={new Date().getTime() + value} value={value}>
                 {value}
               </Option>
             ))}
-          </Select>
+          </StyledSelect>
         </Space>
-      </Modal>
+      </StyledModal>
     </ModalWrapper>
   );
 }
