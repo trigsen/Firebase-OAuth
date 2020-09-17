@@ -5,9 +5,10 @@
     ],
     "plugins": [
       "prettier",
-      "react-hooks"
+      "react-hooks",
+      "@typescript-eslint"
     ],
-    "parser": "babel-eslint",
+    "parser": "@typescript-eslint/parser",
     "env": {
       "node": true,
       "browser": true,
@@ -16,6 +17,11 @@
     "settings": {
       "react": {
         "version": "detect"
+      },
+      "import/resolver": {
+        "node": {
+          "extensions": [".js", ".jsx", ".ts", ".tsx", ".json"]
+        }
       }
     },
     "rules": {
@@ -52,7 +58,7 @@
         2,
         {
           "extensions": [
-            ".jsx", ".js"
+            ".jsx", ".js", ".ts", ".tsx"
           ]
         }
       ],
@@ -72,11 +78,22 @@
         }
       ],
       "react/prop-types": [
-        1
+        0
       ],
       "react/jsx-props-no-spreading": "off",
       "import/no-unresolved": "off",
-      "import/prefer-default-export": "off"
+      "import/prefer-default-export": "off",
+      "import/extensions": ["error", "ignorePackages", {
+        "js": "never",
+        "mjs": "never",
+        "jsx": "never",
+        "ts": "never",
+        "tsx": "never"
+      }],
+      "no-use-before-difine": "off",
+      "@typescript-eslint/no-use-before-define": ["error"],
+      "no-unused-vars": "off",
+      "@typescript-eslint/no-unused-vars": "error"
     },
     "overrides": [
       {
