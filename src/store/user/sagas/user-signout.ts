@@ -8,7 +8,7 @@ import {
 import { removeItemFromLocalStorage } from '@/helpers';
 import { userSignoutSuccess, userSignoutFailure } from '@/store/action';
 import firebase from '@/firebase-config';
-import { history } from '@/Routes.jsx';
+import { history } from '@/Routes';
 
 function* signOut() {
   try {

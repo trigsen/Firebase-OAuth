@@ -7,7 +7,7 @@ import {
 } from '@/constants';
 import { userLoginSuccess, userLoginFailure } from '@/store/action';
 import firebase from '@/firebase-config';
-import { history } from '@/Routes.jsx';
+import { history } from '@/Routes';
 import { setItemToLocalStorage } from '@/helpers';
 
 interface LogInProps {

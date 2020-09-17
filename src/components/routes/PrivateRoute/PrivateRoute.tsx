@@ -3,6 +3,8 @@ import { Route, Redirect } from 'react-router-dom';
 import { LOGIN_PAGE_PATH, USER_LOCAL_STORAGE } from '@/constants';
 
 interface Props {
+  exact?: boolean;
+  path: string;
   component: React.ElementType;
 }
 

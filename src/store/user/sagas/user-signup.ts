@@ -5,7 +5,7 @@ import {
   USER_LOCAL_STORAGE,
   HOURS_TO_FILL_LOCAL_STORAGE,
 } from '@/constants';
-import { history } from '@/Routes.jsx';
+import { history } from '@/Routes';
 import firebase from '@/firebase-config';
 import { setItemToLocalStorage } from '@/helpers';
 import { userSignupSuccess, userSignupFailure } from '@/store/action';

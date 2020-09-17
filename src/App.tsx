@@ -1,5 +1,5 @@
 import React, { ReactElement } from 'react';
-import { Router } from '@/Routes.jsx';
+import { Router } from '@/Routes';
 import './App.css';
 import { Provider } from 'react-redux';
 import store from '@/store/store';
