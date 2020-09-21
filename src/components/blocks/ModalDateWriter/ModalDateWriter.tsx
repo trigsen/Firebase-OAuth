@@ -26,7 +26,7 @@ const ModalDateWriter = () => {
   };
 
   const handleSelectorChange = (value: SelectValue) => setHour(value as string);
-  const handleDatePickerChange = (value: moment.Moment | null) => setDate(value!.toISOString());
+  const handleDatePickerChange = (value: moment.Moment | null) => value ? setDate(value.toISOString()) : null;
   const handleCancel = () => setVisible(false);
 
   const popupContainer = () => document.getElementById('popup-container')!;
