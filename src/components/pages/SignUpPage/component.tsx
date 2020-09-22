@@ -1,13 +1,13 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import SignUpForm from '@/components/forms/AuthForm/SignUpForm';
 import LangSelect from '@/components/blocks/LangSelect';
 import ThemeSwitcher from '@/components/blocks/ThemeSwitcher';
 import { Row, Col } from 'antd';
-import { ThemeSwitcherWrap } from '@/common//components/styles';
+import { ThemeSwitcherWrap } from '@/common/components/styles';
 import { SelectWrapper } from './styles';
 
 const SignUpPage = () => {
-  const popupContainer = (): HTMLElement => document.getElementById('popup-container')!;
+  const popupContainer = useCallback((): HTMLElement => document.getElementById('popup-container')!, []);
   return (
     <Row justify="center" align="middle">
       <Col span={24}>

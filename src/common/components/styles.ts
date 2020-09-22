@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { Button, Select } from 'antd';
+import React from 'react';
 
 export const StyledButton = styled(Button)`
   background: ${({ theme }) => theme.button.background};
@@ -30,7 +31,7 @@ export const ThemeSwitcherWrap = styled.div`
   justify-content: center;
 `;
 
-export const StyledSelect = styled(Select)`
+export const StyledSelect = styled(React.memo(Select))`
   color: ${({ theme }) => theme.colors.default};
 
   .ant-select-selector {

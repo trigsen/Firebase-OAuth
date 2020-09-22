@@ -1,22 +1,22 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { userSignoutReq } from '@/actions';
 import { Row, Col } from 'antd';
 import LangSelect from '@/components/blocks/LangSelect';
 import { FormattedMessage } from 'react-intl';
-import { ThemeSwitcherWrap, StyledButton } from '@/common//components/styles';
+import { ThemeSwitcherWrap, StyledButton } from '@/common/components/styles';
 import ThemeSwitcher from '@/components/blocks/ThemeSwitcher';
 import { getUserEmailSelector } from '@/reselect';
 import { Wrapper, LangWrap, StyledTitle } from './styles';
 
-const Header = () => {
+const Header = React.memo(() => {
   const dispatch = useDispatch();
   const email = useSelector(getUserEmailSelector);
   const signOut = () => {
     dispatch(userSignoutReq());
   };
 
-  const popupContainer = (): HTMLElement => document.getElementById('popup-container')!;
+  const popupContainer = useCallback((): HTMLElement => document.getElementById('popup-container')!, []);
   return (
     <Wrapper>
       <Row justify="space-around" align="middle" gutter={[8, 8]}>
@@ -48,6 +48,6 @@ const Header = () => {
       </Row>
     </Wrapper>
   );
-};
+});
 
 export default Header;

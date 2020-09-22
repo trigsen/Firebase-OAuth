@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 import { createLabelWithInput } from '@/components/blocks/Label';
 import * as Yup from 'yup';
 import { FormattedMessage, useIntl } from 'react-intl';
-import { StyledButton } from '@/common//components/styles';
+import { StyledButton } from '@/common/components/styles';
 import { FormWrapper, InnerWrap } from '../styles';
 
 const SignUpForm = () => {

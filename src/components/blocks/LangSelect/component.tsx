@@ -3,7 +3,7 @@ import { Select } from 'antd';
 import { setLocale } from '@/actions';
 import { EN_LANG, RU_LANG } from '@/constants';
 import { useDispatch, useSelector } from 'react-redux';
-import { StyledSelect } from '@/common//components/styles';
+import { StyledSelect } from '@/common/components/styles';
 import { getLangSelector } from '@/reselect';
 import { SelectValue } from 'antd/lib/select';
 import { Messages } from '@/common/types/types';
@@ -11,7 +11,7 @@ import { Props } from './types';
 
 const { Option } = Select;
 
-const LangSelector: React.FC<Props> = ({ popupContainer }) => {
+const LangSelector: React.FC<Props> = React.memo(({ popupContainer }) => {
   const dispatch = useDispatch();
   const lang = useSelector(getLangSelector);
 
@@ -29,6 +29,6 @@ const LangSelector: React.FC<Props> = ({ popupContainer }) => {
       <Option value={RU_LANG}>Русский</Option>
     </StyledSelect>
   );
-};
+});
 
 export default LangSelector;

@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import React from 'react';
 import { Modal, DatePicker } from 'antd';
 
 export const ModalWrapper = styled.div.attrs({
@@ -39,7 +40,7 @@ export const StyledModal = styled(Modal)`
   }
 `;
 
-export const StyledDatePicker = styled(DatePicker)`
+export const StyledDatePicker = React.memo(styled(DatePicker)`
   background-color: ${({ theme }) => theme.background.default};
 
   .ant-picker-suffix {
@@ -55,4 +56,4 @@ export const StyledDatePicker = styled(DatePicker)`
   .ant-picker-input input::placeholder {
     color: ${({ theme }) => theme.colors.placeholder};
   }
-`;
+`);

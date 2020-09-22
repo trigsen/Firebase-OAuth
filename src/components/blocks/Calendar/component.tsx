@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useMemo } from 'react';
 import { Context } from '@/context';
 import { HOURS_TO_FILL_LOCAL_STORAGE } from '@/constants';
 import { Hour, HourWrap, StyledCalendar } from './styles';
@@ -19,9 +19,9 @@ const updateHoursLocalStorage = (state: object) => {
   return updatedLocalStorage;
 };
 
-const Calendar = () => {
+const Calendar = React.memo(() => {
   const { hoursStorage } = useContext(Context);
-  const hoursLocalStorage = updateHoursLocalStorage(hoursStorage);
+  const hoursLocalStorage = useMemo(() => updateHoursLocalStorage(hoursStorage), [hoursStorage]);
   const keysStorage = Object.entries(hoursLocalStorage);
 
   const dateCellRender = (value: any) => {
@@ -44,6 +44,6 @@ const Calendar = () => {
   };
 
   return <StyledCalendar fullscreen={false} dateCellRender={dateCellRender} />;
-};
+});
 
 export default Calendar;
