@@ -6,9 +6,9 @@ import { FieldProps } from 'formik';
 import { StyledInput, Label as Lab, ErrorWrap } from './styles';
 import { Props } from './types';
 
-export const Label: React.FC<Props> = ({ children, ...props }) => (
+export const Label: React.FC<Props> = React.memo(({ children, ...props }) => (
   <Lab {...props}>{children}</Lab>
-);
+));
 
 export const createLabelWithInput = ({ inputType, id, localeId }: Props) => ({
   field: { name, ...fieldProps },

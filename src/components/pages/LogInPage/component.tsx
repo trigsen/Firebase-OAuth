@@ -1,13 +1,13 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import LogInForm from '@/components/forms/AuthForm/LogInForm';
 import LangSelect from '@/components/blocks/LangSelect';
 import ThemeSwitcher from '@/components/blocks/ThemeSwitcher';
 import { Row, Col } from 'antd';
-import { ThemeSwitcherWrap } from '@/common//components/styles';
+import { ThemeSwitcherWrap } from '@/common/components/styles';
 import { SelectWrapper } from './styles';
 
 const LogInPage = () => {
-  const popupContainer = (): HTMLElement => document.getElementById('popup-container')!;
+  const popupContainer = useCallback((): HTMLElement => document.getElementById('popup-container')!, []);
   return (
     <>
       <Row justify="center" align="middle">
