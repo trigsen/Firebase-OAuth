@@ -6,22 +6,22 @@ import { Row, Col } from 'antd';
 import { Link } from 'react-router-dom';
 import { createLabelWithInput } from '@/components/blocks/Label';
 import * as Yup from 'yup';
-import { FormattedMessage, useIntl } from 'react-intl';
+import { FormattedMessage } from 'react-intl';
 import { StyledButton } from '@/common/components/styles';
+import { useTranslate } from '@/utils/hooks';
 import { FormWrapper, InnerWrap } from '../styles';
 
 const LogInForm = () => {
   const dispatch = useDispatch();
-  const intl = useIntl();
 
   const schema = Yup.object({
     email: Yup.string()
-      .email(intl.formatMessage({ id: 'error.email.invalid' }))
-      .required(intl.formatMessage({ id: 'error.email.required' })),
+      .email(useTranslate('error.email.invalid', 'Invalid email'))
+      .required(useTranslate('error.email.required', 'Email is required')),
     password: Yup.string()
-      .matches(/[a-zA-Z]/, intl.formatMessage({ id: 'error.password.invalid' }))
-      .min(8, intl.formatMessage({ id: 'error.password.short' }))
-      .required(intl.formatMessage({ id: 'error.password.required' })),
+      .matches(/[a-zA-Z]/, useTranslate('error.password.invalid', 'Incorrect password'))
+      .min(8, useTranslate('error.password.short', 'Password is short'))
+      .required(useTranslate('error.password.required', 'Password is required')),
   });
 
   return (
