@@ -3,14 +3,14 @@ import React, {
 } from 'react';
 import { Space } from 'antd';
 import { Context } from '@/context';
-import { FormattedMessage, useIntl } from 'react-intl';
+import { FormattedMessage } from 'react-intl';
+import { useTranslate } from '@/utils/hooks';
 import { StyledButton } from '@/common/components/styles';
 import { SelectValue } from 'antd/lib/select';
 import HourPicker from '@/components/blocks/HourPicker';
 import { ModalWrapper, StyledModal, StyledDatePicker } from './styles';
 
 const ModalDateWriter = React.memo(() => {
-  const intl = useIntl();
   const [visible, setVisible] = useState(false);
   const [hour, setHour] = useState('');
   const [date, setDate] = useState('');
@@ -38,7 +38,7 @@ const ModalDateWriter = React.memo(() => {
       </StyledButton>
       <StyledModal
         title=""
-        cancelText={intl.formatMessage({ id: 'modal.cancel' })}
+        cancelText={useTranslate('modal.cancel', 'Cancel')}
         visible={visible}
         onOk={handleOk}
         onCancel={handleCancel}
@@ -46,7 +46,7 @@ const ModalDateWriter = React.memo(() => {
       >
         <Space align="center">
           <StyledDatePicker
-            placeholder={intl.formatMessage({ id: 'datepicker.placholder' })}
+            placeholder={useTranslate('datepicker.placholder', 'Select date')}
             onChange={handleDatePickerChange}
             getPopupContainer={popupContainer} />
           <HourPicker handleSelectorChange={handleSelectorChange} popupContainer={popupContainer} />
