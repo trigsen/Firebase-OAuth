@@ -8,6 +8,7 @@ import { SelectWrapper } from './styles';
 
 const LogInPage = () => {
   const popupContainer = useCallback((): HTMLElement => document.getElementById('popup-container')!, []);
+
   return (
     <>
       <Row justify="center" align="middle">
