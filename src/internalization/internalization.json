@@ -18,7 +18,8 @@
     "error.firstName.invalid": "First name should contain 3 or more letters",
     "error.lastName.invalid": "Last name should contain 3 or more letters",
     "modal.cancel": "Cancel",
-    "datepicker.placholder": "Select date"
+    "datepicker.placholder": "Select date",
+    "themeswitcher.tip": "Switch current theme"
   },
   "ru": {
     "logIn": "Войти",
@@ -39,6 +40,7 @@
     "error.firstName.invalid": "Имя должно содержать как минимум 3 буквы",
     "error.lastName.invalid": "Фамилия должна содержать как минимум 3 буквы",
     "modal.cancel": "Отмена",
-    "datepicker.placholder": "Выберите дату"
+    "datepicker.placholder": "Выберите дату",
+    "themeswitcher.tip": "Сменить текущую тему"
   }
 }
