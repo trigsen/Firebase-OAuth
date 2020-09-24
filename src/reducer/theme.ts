@@ -17,8 +17,6 @@ export const theme = (
         isDark: !state.isDark,
       };
     default:
-      return {
-        ...state,
-      };
+      return state;
   }
 };

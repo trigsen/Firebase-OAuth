@@ -17,8 +17,6 @@ export const locale = (
         lang: payload,
       };
     default:
-      return {
-        ...state,
-      };
+      return state;
   }
 };
