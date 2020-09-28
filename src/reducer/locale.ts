@@ -2,7 +2,7 @@ import { SET_LOCALE, EN_LANG } from '@/constants';
 import { LocalTypes } from '@/actions/types';
 import { LocaleReducer } from './types';
 
-const initialState: LocaleReducer = {
+export const initialState: LocaleReducer = {
   lang: EN_LANG,
 };
 

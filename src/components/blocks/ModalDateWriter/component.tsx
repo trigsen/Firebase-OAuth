@@ -1,35 +1,43 @@
-import React, {
-  useState, useContext, useCallback,
-} from 'react';
+import React, { useState, useCallback } from 'react';
 import { Space } from 'antd';
-import { Context } from '@/context';
 import { FormattedMessage } from 'react-intl';
 import { useTranslate } from '@/utils/hooks';
 import { StyledButton } from '@/common/components/styles';
 import { SelectValue } from 'antd/lib/select';
 import HourPicker from '@/components/blocks/HourPicker';
+import { useDispatch } from 'react-redux';
+import { updateHours } from '@/actions/calendar';
 import { ModalWrapper, StyledModal, StyledDatePicker } from './styles';
 
 const ModalDateWriter = React.memo(() => {
   const [visible, setVisible] = useState(false);
   const [hour, setHour] = useState('');
   const [date, setDate] = useState('');
-  const { addHour } = useContext(Context);
+  const dispatch = useDispatch();
 
   const showModal = useCallback(() => setVisible(true), []);
   const handleOk = useCallback(() => {
     if (hour !== null && !!date) {
       const ISOStringDate = new Date(date).toISOString().substring(0, 10);
-      addHour(ISOStringDate, hour);
+      dispatch(updateHours({ [ISOStringDate]: hour }));
     }
     setVisible(false);
-  }, [hour, date, addHour]);
+  }, [hour, date, dispatch]);
 
-  const handleSelectorChange = useCallback((value: SelectValue) => setHour(value as string), []);
-  const handleDatePickerChange = useCallback((value: moment.Moment | null) => (value ? setDate(value.toISOString()) : null), []);
+  const handleSelectorChange = useCallback(
+    (value: SelectValue) => setHour(value as string),
+    [],
+  );
+  const handleDatePickerChange = useCallback(
+    (value: moment.Moment | null) => (value ? setDate(value.toISOString()) : null),
+    [],
+  );
   const handleCancel = useCallback(() => setVisible(false), []);
 
-  const popupContainer = useCallback(() => document.getElementById('popup-container')!, []);
+  const popupContainer = useCallback(
+    () => document.getElementById('popup-container')!,
+    [],
+  );
 
   return (
     <ModalWrapper>
@@ -49,7 +57,9 @@ const ModalDateWriter = React.memo(() => {
             placeholder={useTranslate('datepicker.placholder', 'Select date')}
             onChange={handleDatePickerChange}
             getPopupContainer={popupContainer} />
-          <HourPicker handleSelectorChange={handleSelectorChange} popupContainer={popupContainer} />
+          <HourPicker
+            handleSelectorChange={handleSelectorChange}
+            popupContainer={popupContainer} />
         </Space>
       </StyledModal>
     </ModalWrapper>

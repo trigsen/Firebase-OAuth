@@ -19,7 +19,11 @@
     "error.lastName.invalid": "Last name should contain 3 or more letters",
     "modal.cancel": "Cancel",
     "datepicker.placholder": "Select date",
-    "themeswitcher.tip": "Switch current theme"
+    "themeswitcher.tip": "Switch current theme",
+    "action.undo": "Undo previous action",
+    "action.redo": "Redo previous action",
+    "undo": "Undo",
+    "redo": "Redo"
   },
   "ru": {
     "logIn": "Войти",
@@ -41,6 +45,10 @@
     "error.lastName.invalid": "Фамилия должна содержать как минимум 3 буквы",
     "modal.cancel": "Отмена",
     "datepicker.placholder": "Выберите дату",
-    "themeswitcher.tip": "Сменить текущую тему"
+    "themeswitcher.tip": "Сменить текущую тему",
+    "action.undo": "Отменить последнее действие",
+    "action.redo": "Повторить отмененное действие",
+    "undo": "Отменить",
+    "redo": "Повторить"
   }
 }

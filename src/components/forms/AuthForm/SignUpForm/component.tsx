@@ -25,9 +25,14 @@ const SignUpForm = () => {
       .email(useTranslate('error.email.invalid', 'Invalid email'))
       .required(useTranslate('error.email.required', 'Email is required')),
     password: Yup.string()
-      .matches(/[a-zA-Z]/, useTranslate('error.password.invalid', 'Incorrect password'))
+      .matches(
+        /[a-zA-Z]/,
+        useTranslate('error.password.invalid', 'Incorrect password'),
+      )
       .min(8, useTranslate('error.password.short', 'Password is short'))
-      .required(useTranslate('error.password.required', 'Password is required')),
+      .required(
+        useTranslate('error.password.required', 'Password is required'),
+      ),
     firstName: Yup.string().min(
       3,
       useTranslate('error.firstName.invalid', 'Invalid first name'),

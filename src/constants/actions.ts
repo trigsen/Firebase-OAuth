@@ -13,3 +13,7 @@ export const USER_SIGNOUT_REQUEST = 'USER_SIGNOUT_REQUEST';
 export const SET_LOCALE = 'SET_LOCALE';
 
 export const SET_THEME = 'SET_THEME';
+
+export const CALENDAR_UNDO = 'CALENDAR_UNDO';
+export const CALENDAR_REDO = 'CALENDAR_REDO';
+export const UPDATE_HOURS = 'UPDATE_HOURS';
