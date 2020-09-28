@@ -7,7 +7,10 @@ import { ThemeSwitcherWrap } from '@/common/components/styles';
 import { SelectWrapper } from './styles';
 
 const LogInPage = () => {
-  const popupContainer = useCallback((): HTMLElement => document.getElementById('popup-container')!, []);
+  const popupContainer = useCallback(
+    (): HTMLElement => document.getElementById('popup-container')!,
+    [],
+  );
 
   return (
     <>

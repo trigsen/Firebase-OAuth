@@ -7,7 +7,10 @@ import { ThemeSwitcherWrap } from '@/common/components/styles';
 import { SelectWrapper } from './styles';
 
 const SignUpPage = () => {
-  const popupContainer = useCallback((): HTMLElement => document.getElementById('popup-container')!, []);
+  const popupContainer = useCallback(
+    (): HTMLElement => document.getElementById('popup-container')!,
+    [],
+  );
   return (
     <Row justify="center" align="middle">
       <Col span={24}>

@@ -10,8 +10,10 @@ import {
   USER_SIGNUP_FAILURE,
   SET_THEME,
   SET_LOCALE,
+  UPDATE_HOURS,
 } from '@/constants';
 import { User, Messages } from '@/common/types/types';
+import { HoursStorage } from '@/components/blocks/Calendar/types';
 
 interface SetLocale {
   type: typeof SET_LOCALE;
@@ -74,3 +76,10 @@ interface setThemeAction {
 }
 
 export type ThemeTypes = setThemeAction;
+
+interface UpdateHoursAction {
+  type: typeof UPDATE_HOURS;
+  payload: Array<HoursStorage>;
+}
+
+export type CalendarActionTypes = UpdateHoursAction | SignOutSuccess;

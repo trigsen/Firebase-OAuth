@@ -1,14 +1,16 @@
-import React, { useContext, useMemo } from 'react';
-import { Context } from '@/context';
+import React, { useMemo } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { HOURS_TO_FILL_LOCAL_STORAGE } from '@/constants';
+import { getHoursStorage } from '@/reselect/calendar';
+import { HoursStorage } from '@/components/blocks/Calendar/types';
+import { Col, Row } from 'antd';
+import ButtonWithToolTip from '@/components/controls/ButtonWithToolTip';
+import { calendarRedoAction, calendarUndoAction } from '@/actions';
 import { Hour, HourWrap, StyledCalendar } from './styles';
+import { useTranslate } from '@/utils/hooks';
 
-const updateHoursLocalStorage = (state: object) => {
-  const prevState = JSON.parse(
-    localStorage.getItem(HOURS_TO_FILL_LOCAL_STORAGE)!,
-  );
+const updateHoursLocalStorage = (state: HoursStorage) => {
   const updatedLocalStorage = {
-    ...prevState,
     ...state,
   };
   localStorage.setItem(
@@ -19,9 +21,14 @@ const updateHoursLocalStorage = (state: object) => {
   return updatedLocalStorage;
 };
 
-const Calendar = React.memo(() => {
-  const { hoursStorage } = useContext(Context);
-  const hoursLocalStorage = useMemo(() => updateHoursLocalStorage(hoursStorage), [hoursStorage]);
+const Calendar = () => {
+  const hoursStorage = useSelector(getHoursStorage);
+  const dispatch = useDispatch();
+  const hoursLocalStorage = useMemo(
+    () => updateHoursLocalStorage(hoursStorage),
+    [hoursStorage],
+  );
+
   const keysStorage = Object.entries(hoursLocalStorage);
 
   const dateCellRender = (value: any) => {
@@ -33,17 +40,46 @@ const Calendar = React.memo(() => {
       }),
     );
     const [hour] = Object.values(hourToFill);
+    const primitiveHour = (hour as unknown) as number;
 
-    return (hour as number) >= 0 ? (
-      <HourWrap num={hour as number}>
-        <Hour>{hour as number}</Hour>
+    return primitiveHour >= 0 ? (
+      <HourWrap num={primitiveHour}>
+        <Hour>{primitiveHour}</Hour>
       </HourWrap>
     ) : (
       <HourWrap />
     );
   };
 
-  return <StyledCalendar fullscreen={false} dateCellRender={dateCellRender} />;
-});
+  const UndoHandler = () => {
+    dispatch(calendarUndoAction());
+  };
+
+  const RedoHandler = () => {
+    dispatch(calendarRedoAction());
+  };
+
+  return (
+    <Row justify="center" gutter={[16, 24]}>
+      <Col span={24}>
+        <StyledCalendar fullscreen={false} dateCellRender={dateCellRender} />
+      </Col>
+      <Col span={24}>
+        <Row gutter={[16, 8]}>
+          <Col span={12}>
+            <ButtonWithToolTip onClick={UndoHandler} translation={useTranslate('action.undo', 'Undo previous action')}>
+              {useTranslate('undo', 'Undo')}
+            </ButtonWithToolTip>
+          </Col>
+          <Col span={12}>
+            <ButtonWithToolTip onClick={RedoHandler} translation={useTranslate('action.redo', 'Redo previous action')}>
+              {useTranslate('redo', 'Redo')}
+            </ButtonWithToolTip>
+          </Col>
+        </Row>
+      </Col>
+    </Row>
+  );
+};
 
 export default Calendar;

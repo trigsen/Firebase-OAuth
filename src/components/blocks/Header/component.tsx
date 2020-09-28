@@ -16,7 +16,10 @@ const Header = React.memo(() => {
     dispatch(userSignoutReq());
   };
 
-  const popupContainer = useCallback((): HTMLElement => document.getElementById('popup-container')!, []);
+  const popupContainer = useCallback(
+    (): HTMLElement => document.getElementById('popup-container')!,
+    [],
+  );
   return (
     <Wrapper>
       <Row justify="space-around" align="middle" gutter={[8, 8]}>
