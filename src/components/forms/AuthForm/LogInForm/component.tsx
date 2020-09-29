@@ -8,7 +8,7 @@ import { createLabelWithInput } from '@/components/blocks/Label';
 import * as Yup from 'yup';
 import { FormattedMessage } from 'react-intl';
 import { StyledButton } from '@/common/components/styles';
-import { useTranslate } from '@/utils/hooks';
+import { useTranslate } from '@/utils/hooks/hooks';
 import { FormWrapper, InnerWrap } from '../styles';
 
 const LogInForm = () => {

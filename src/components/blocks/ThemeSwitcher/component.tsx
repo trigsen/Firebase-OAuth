@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { setTheme } from '@/actions';
 import { getIsDarkState } from '@/reselect';
 import withToolTip from '@/components/hoc/withTooltip';
-import { useTranslate } from '@/utils/hooks';
+import { useTranslate } from '@/utils/hooks/hooks';
 import { StyledSwitch } from './styles';
 
 const ThemeSwitcher = React.memo(() => {

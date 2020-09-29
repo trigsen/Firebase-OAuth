@@ -3,7 +3,7 @@ import { Row, Col } from 'antd';
 import ErrorMsg from '@/components/blocks/ErrorMsg';
 import { FormattedMessage } from 'react-intl';
 import { FieldProps } from 'formik';
-import { useTranslate } from '@/utils/hooks';
+import { useTranslate } from '@/utils/hooks/hooks';
 import { StyledInput, Label as Lab, ErrorWrap } from './styles';
 import { Props } from './types';
 

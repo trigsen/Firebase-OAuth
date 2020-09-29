@@ -1,7 +1,7 @@
 import React, { useState, useCallback } from 'react';
 import { Space } from 'antd';
 import { FormattedMessage } from 'react-intl';
-import { useTranslate } from '@/utils/hooks';
+import { useTranslate } from '@/utils/hooks/hooks';
 import { StyledButton } from '@/common/components/styles';
 import { SelectValue } from 'antd/lib/select';
 import HourPicker from '@/components/blocks/HourPicker';
