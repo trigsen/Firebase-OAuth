@@ -7,7 +7,7 @@ import {
 } from '@/constants';
 import { history } from '@/Routes';
 import firebase from '@/firebase-config';
-import { setItemToLocalStorage } from '@/helpers';
+import { setItemToLocalStorage } from '@/utils/local-storage';
 import { userSignupSuccess, userSignupFailure } from '@/actions';
 
 interface SignUpProps {
