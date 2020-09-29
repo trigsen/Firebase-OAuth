@@ -8,7 +8,7 @@ import {
 import { userLoginSuccess, userLoginFailure } from '@/actions';
 import firebase from '@/firebase-config';
 import { history } from '@/Routes';
-import { setItemToLocalStorage } from '@/helpers';
+import { setItemToLocalStorage } from '@/utils/local-storage';
 
 interface LogInProps {
   type: typeof USER_LOGIN_REQUEST;

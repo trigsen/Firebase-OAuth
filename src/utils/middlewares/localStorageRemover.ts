@@ -5,7 +5,7 @@ import {
   USER_LOCAL_STORAGE,
   USER_SIGNOUT_SUCCESS,
 } from '@/constants';
-import { removeItemFromLocalStorage } from '@/helpers';
+import { removeItemFromLocalStorage } from '@/utils/local-storage';
 
 export const localStorageRemover : Middleware<{}, RootState> = (store) => (next) => (action) => {
   switch(action.type) {

@@ -5,7 +5,7 @@ import {
   UPDATE_HOURS,
   USER_SIGNOUT_SUCCESS,
 } from '@/constants';
-import { getItemFromLocalStorage } from '@/helpers';
+import { getItemFromLocalStorage } from '@/utils/local-storage';
 
 export const initialValue: CalendarReducer = {
   hours: getItemFromLocalStorage(HOURS_TO_FILL_LOCAL_STORAGE),
