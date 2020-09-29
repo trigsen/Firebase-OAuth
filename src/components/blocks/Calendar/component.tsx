@@ -24,6 +24,7 @@ const updateHoursLocalStorage = (state: HoursStorage) => {
 const Calendar = () => {
   const hoursStorage = useSelector(getHoursStorage);
   const dispatch = useDispatch();
+  const translate = useTranslate();
   const hoursLocalStorage = useMemo(
     () => updateHoursLocalStorage(hoursStorage),
     [hoursStorage],
@@ -67,13 +68,13 @@ const Calendar = () => {
       <Col span={24}>
         <Row gutter={[16, 8]}>
           <Col span={12}>
-            <ButtonWithToolTip onClick={UndoHandler} translation={useTranslate('action.undo', 'Undo previous action')}>
-              {useTranslate('undo', 'Undo')}
+            <ButtonWithToolTip onClick={UndoHandler} translation={translate('action.undo', 'Undo previous action')}>
+              {translate('undo', 'Undo')}
             </ButtonWithToolTip>
           </Col>
           <Col span={12}>
-            <ButtonWithToolTip onClick={RedoHandler} translation={useTranslate('action.redo', 'Redo previous action')}>
-              {useTranslate('redo', 'Redo')}
+            <ButtonWithToolTip onClick={RedoHandler} translation={translate('action.redo', 'Redo previous action')}>
+              {translate('redo', 'Redo')}
             </ButtonWithToolTip>
           </Col>
         </Row>

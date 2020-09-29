@@ -8,13 +8,14 @@ import { StyledSwitch } from './styles';
 
 const ThemeSwitcher = React.memo(() => {
   const dispatch = useDispatch();
+  const translate = useTranslate();
   const isDark: boolean = useSelector(getIsDarkState);
   const onChange = () => {
     dispatch(setTheme());
   };
   const StyledSwitchWithTip = withToolTip(
     StyledSwitch,
-    useTranslate('themeswitcher.tip', 'Switch current theme'),
+    translate('themeswitcher.tip', 'Switch current theme'),
     'right',
   );
 

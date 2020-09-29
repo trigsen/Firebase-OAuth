@@ -14,6 +14,7 @@ const ModalDateWriter = React.memo(() => {
   const [hour, setHour] = useState('');
   const [date, setDate] = useState('');
   const dispatch = useDispatch();
+  const translate = useTranslate();
 
   const showModal = useCallback(() => setVisible(true), []);
   const handleOk = useCallback(() => {
@@ -46,7 +47,7 @@ const ModalDateWriter = React.memo(() => {
       </StyledButton>
       <StyledModal
         title=""
-        cancelText={useTranslate('modal.cancel', 'Cancel')}
+        cancelText={translate('modal.cancel', 'Cancel')}
         visible={visible}
         onOk={handleOk}
         onCancel={handleCancel}
@@ -54,7 +55,7 @@ const ModalDateWriter = React.memo(() => {
       >
         <Space align="center">
           <StyledDatePicker
-            placeholder={useTranslate('datepicker.placholder', 'Select date')}
+            placeholder={translate('datepicker.placholder', 'Select date')}
             onChange={handleDatePickerChange}
             getPopupContainer={popupContainer} />
           <HourPicker

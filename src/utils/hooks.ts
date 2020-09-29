@@ -1,7 +1,7 @@
 import { useIntl } from 'react-intl';
 
-export const useTranslate = (id: string, defaultMsg: string) => {
+export const useTranslate = () => {
   const intl = useIntl();
 
-  return intl.formatMessage({ id }) ? intl.formatMessage({ id }) : defaultMsg;
+  return (id: string, defaultMsg: string) => intl.formatMessage({ id }) ? intl.formatMessage({ id }) : defaultMsg;
 };

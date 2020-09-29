@@ -13,19 +13,20 @@ import { FormWrapper, InnerWrap } from '../styles';
 
 const LogInForm = () => {
   const dispatch = useDispatch();
+  const translate = useTranslate();
 
   const schema = Yup.object({
     email: Yup.string()
-      .email(useTranslate('error.email.invalid', 'Invalid email'))
-      .required(useTranslate('error.email.required', 'Email is required')),
+      .email(translate('error.email.invalid', 'Invalid email'))
+      .required(translate('error.email.required', 'Email is required')),
     password: Yup.string()
       .matches(
         /[a-zA-Z]/,
-        useTranslate('error.password.invalid', 'Incorrect password'),
+        translate('error.password.invalid', 'Incorrect password'),
       )
-      .min(8, useTranslate('error.password.short', 'Password is short'))
+      .min(8, translate('error.password.short', 'Password is short'))
       .required(
-        useTranslate('error.password.required', 'Password is required'),
+        translate('error.password.required', 'Password is required'),
       ),
   });
 
