@@ -45,4 +45,4 @@ export const createLabelWithInput = ({ inputType, id, localeId }: Props) => ({
       ) : null}
     </Row>
   );
-}
+};

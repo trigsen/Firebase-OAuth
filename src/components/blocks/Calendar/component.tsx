@@ -6,8 +6,8 @@ import { HoursStorage } from '@/components/blocks/Calendar/types';
 import { Col, Row } from 'antd';
 import ButtonWithToolTip from '@/components/controls/ButtonWithToolTip';
 import { calendarRedoAction, calendarUndoAction } from '@/actions';
-import { Hour, HourWrap, StyledCalendar } from './styles';
 import { useTranslate } from '@/utils/hooks';
+import { Hour, HourWrap, StyledCalendar } from './styles';
 
 const updateHoursLocalStorage = (state: HoursStorage) => {
   const updatedLocalStorage = {
