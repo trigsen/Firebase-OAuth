@@ -68,12 +68,18 @@ const Calendar = () => {
       <Col span={24}>
         <Row gutter={[16, 8]}>
           <Col span={12}>
-            <ButtonWithToolTip onClick={UndoHandler} translation={translate('action.undo', 'Undo previous action')}>
+            <ButtonWithToolTip
+              onClick={UndoHandler}
+              translation={translate('action.undo', 'Undo previous action')}
+            >
               {translate('undo', 'Undo')}
             </ButtonWithToolTip>
           </Col>
           <Col span={12}>
-            <ButtonWithToolTip onClick={RedoHandler} translation={translate('action.redo', 'Redo previous action')}>
+            <ButtonWithToolTip
+              onClick={RedoHandler}
+              translation={translate('action.redo', 'Redo previous action')}
+            >
               {translate('redo', 'Redo')}
             </ButtonWithToolTip>
           </Col>

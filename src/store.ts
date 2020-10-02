@@ -9,7 +9,9 @@ const sagaMiddleware = createSagaMiddleware();
 const configureStore = (preloadedStore: object) => createStore<RootState, any, any, any>(
   rootReducer,
   preloadedStore,
-  composeWithDevTools(applyMiddleware(sagaMiddleware, localStorageRemover, logger)),
+  composeWithDevTools(
+    applyMiddleware(sagaMiddleware, localStorageRemover, logger),
+  ),
 );
 
 const store = configureStore({});

@@ -1,8 +1,5 @@
 import { call, put, takeEvery } from 'redux-saga/effects';
-import {
-  USER_SIGNOUT_REQUEST,
-  LOGIN_PAGE_PATH,
-} from '@/constants';
+import { USER_SIGNOUT_REQUEST, LOGIN_PAGE_PATH } from '@/constants';
 import { userSignoutSuccess, userSignoutFailure } from '@/actions';
 import firebase from '@/firebase-config';
 import { history } from '@/Routes';

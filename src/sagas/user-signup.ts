@@ -4,11 +4,14 @@ import {
   CALENDAR_PAGE_PATH,
   USER_LOCAL_STORAGE,
   HOURS_TO_FILL_LOCAL_STORAGE,
+  FIREBASE_URL,
+  FIREBASE_SIGN_UP,
+  FIREBASE_UPDATE_PROFILE,
 } from '@/constants';
 import { history } from '@/Routes';
-import firebase from '@/firebase-config';
 import { setItemToLocalStorage } from '@/utils/local-storage';
 import { userSignupSuccess, userSignupFailure } from '@/actions';
+import RequestService from '@/utils/api';
 
 interface SignUpProps {
   type: typeof USER_SIGNUP_REQUEST;
@@ -26,14 +29,24 @@ function* signUp({
   },
 }: SignUpProps) {
   try {
-    const auth = firebase.auth();
-    yield call([auth, auth.createUserWithEmailAndPassword], email, password);
-    yield call([auth.currentUser, auth.currentUser!.updateProfile], {
-      displayName: `${firstName} ${lastName}`,
-    });
-    yield put(userSignupSuccess(auth.currentUser!));
+    const requester = RequestService.getInstance();
+    const URL = `${FIREBASE_URL}/${FIREBASE_SIGN_UP}?key=${process.env.REACT_APP_API_KEY}`;
+    const body = {
+      email,
+      password,
+    };
+    const { value } = yield call([requester, requester.post], URL, body);
 
-    setItemToLocalStorage(USER_LOCAL_STORAGE, auth.currentUser!);
+    const updateUserURL = `${FIREBASE_URL}/${FIREBASE_UPDATE_PROFILE}?key=${process.env.REACT_APP_API_KEY}`;
+    const updatedValues = {
+      idToken: value.idToken,
+      displayName: `${firstName} ${lastName}`,
+    };
+    yield call([requester, requester.post], updateUserURL, updatedValues);
+
+    yield put(userSignupSuccess(value));
+
+    setItemToLocalStorage(USER_LOCAL_STORAGE, value);
     setItemToLocalStorage(HOURS_TO_FILL_LOCAL_STORAGE, {});
     history.push(CALENDAR_PAGE_PATH);
   } catch (error) {
