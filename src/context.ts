@@ -1,9 +1,10 @@
 import React from 'react';
 
-const initialState = {
-  hoursStorage: {},
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  addHour: (date: string, hour: string) => {},
+const initialToastState = {
+  // eslint-disable-next-line
+  add: (type: 'danger' | 'success', description: string, title: string) => {},
+  // eslint-disable-next-line
+  remove: (id: number) => {},
 };
 
-export const Context = React.createContext(initialState);
+export const ToastContext = React.createContext(initialToastState);

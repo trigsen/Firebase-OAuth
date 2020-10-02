@@ -31,9 +31,7 @@ const SignUpForm = () => {
         translate('error.password.invalid', 'Incorrect password'),
       )
       .min(8, translate('error.password.short', 'Password is short'))
-      .required(
-        translate('error.password.required', 'Password is required'),
-      ),
+      .required(translate('error.password.required', 'Password is required')),
     firstName: Yup.string().min(
       3,
       translate('error.firstName.invalid', 'Invalid first name'),

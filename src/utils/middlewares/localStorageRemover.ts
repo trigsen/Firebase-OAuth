@@ -7,13 +7,14 @@ import {
 } from '@/constants';
 import { removeItemFromLocalStorage } from '@/utils/local-storage';
 
-export const localStorageRemover : Middleware<{}, RootState> = (store) => (next) => (action) => {
-  switch(action.type) {
-    case USER_SIGNOUT_SUCCESS: {
+// eslint-disable-next-line
+export const localStorageRemover: Middleware<{}, RootState> = state => next => action => {
+  switch (action.type) {
+    case USER_SIGNOUT_SUCCESS:
       removeItemFromLocalStorage(USER_LOCAL_STORAGE);
       removeItemFromLocalStorage(HOURS_TO_FILL_LOCAL_STORAGE);
-    }
-    break;
+      break;
+    default: return next(action);
   }
   return next(action);
-}
+};
