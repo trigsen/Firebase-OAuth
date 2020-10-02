@@ -17,6 +17,7 @@ const getIcon = (type: 'danger' | 'success') => {
 
 const Toast = ({ type, children, remove }: Props) => {
   const ref: any = useRef();
+
   ref.current = remove;
 
   const Icon = getIcon(type);
@@ -29,7 +30,7 @@ const Toast = ({ type, children, remove }: Props) => {
 
   return (
     <Wrapper type={type}>
-      <Row justify="center" align="middle" gutter={[16, 0]}>
+      <Row justify="center" align="middle" gutter={[16, 0]} style={{width: '100%'}}>
         <Col span={4}>{Icon}</Col>
         <Col span={20}>
           <Typography style={{ color: '#FFFFFF' }}>{children}</Typography>

@@ -3,12 +3,12 @@ import { WrapperProps } from '@/components/blocks/Toast/types';
 
 const toastAnimation = keyframes`    
   0% {
-      left: -100px;
+      left: -700px;
     }
-    
+  
   100% {
-      left: 0;
-    }
+    left: 0;
+  }
 `;
 
 export const Wrapper = styled.div`
@@ -17,7 +17,7 @@ export const Wrapper = styled.div`
   height: 50px;
   position: relative;
   font-size: 0.8rem;
-  animation: ${toastAnimation} 0.4s;
+  animation: ${toastAnimation} .5s;
   color: #ffffff !important;
   background-color: ${({ type }: WrapperProps) => (type === 'success' ? 'rgba(40, 186, 0, 0.8)' : 'rgba(188, 22, 0, 0.8)')};
   border-radius: 5px;

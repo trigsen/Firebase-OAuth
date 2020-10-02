@@ -75,11 +75,11 @@ class RequestService implements RequestServiceInterface {
       case 400:
         PopUpService.showPopUp(
           'danger',
-          'Something goes wrong. Please, retry.',
+          'toast.fail',
         );
         throw new Error('400 status');
       case 200:
-        PopUpService.showPopUp('success', 'Success action');
+        PopUpService.showPopUp('success', 'toast.success');
         break;
       default:
         return null;

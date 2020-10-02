@@ -23,7 +23,9 @@
     "action.undo": "Undo previous action",
     "action.redo": "Redo previous action",
     "undo": "Undo",
-    "redo": "Redo"
+    "redo": "Redo",
+    "toast.success": "Success",
+    "toast.fail": "Something goes wrong. Please retry"
   },
   "ru": {
     "logIn": "Войти",
@@ -49,6 +51,8 @@
     "action.undo": "Отменить последнее действие",
     "action.redo": "Повторить отмененное действие",
     "undo": "Отменить",
-    "redo": "Повторить"
+    "redo": "Повторить",
+    "toast.success": "Успешно",
+    "toast.fail": "Что-то пошло не так. Попробуйте еще раз."
   }
 }
