@@ -1,5 +1,6 @@
 import styled, { keyframes } from 'styled-components';
 import { WrapperProps } from '@/components/blocks/Toast/types';
+import { Typography, Row } from 'antd';
 
 const toastAnimation = keyframes`    
   0% {
@@ -25,4 +26,12 @@ export const Wrapper = styled.div`
   margin-top: 10px;
   box-shadow: 0px 0px 5px 3px rgba(0, 0, 0, 0.4);
   z-index: 20;
+`;
+
+export const StyledTypography = styled(Typography)`
+  color: ${({ theme }) => theme.colors.white};
+`;
+
+export const StyledRow = styled(Row)`
+  width: 100%;
 `;

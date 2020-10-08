@@ -2,14 +2,14 @@ import React from 'react';
 import { Formik, Form, Field } from 'formik';
 import { useDispatch } from 'react-redux';
 import { userLoginReq } from '@/actions';
-import { Row, Col } from 'antd';
+import { Col } from 'antd';
 import { Link } from 'react-router-dom';
 import { createLabelWithInput } from '@/components/blocks/Label';
 import * as Yup from 'yup';
 import { FormattedMessage } from 'react-intl';
 import { StyledButton } from '@/common/components/styles';
 import { useTranslate } from '@/utils/hooks/useTranslate';
-import { FormWrapper, InnerWrap } from '../styles';
+import { FormWrapper, InnerWrap, StyledRow } from '../styles';
 
 const LogInForm = () => {
   const dispatch = useDispatch();
@@ -55,11 +55,10 @@ const LogInForm = () => {
               })}
             </Field>
 
-            <Row
+            <StyledRow
               justify="center"
               align="middle"
               gutter={[0, 16]}
-              style={{ textAlign: 'center' }}
             >
               <Col sm={12} xs={24}>
                 <StyledButton type="dashed" htmlType="submit" name="login">
@@ -73,7 +72,7 @@ const LogInForm = () => {
                   </StyledButton>
                 </Link>
               </Col>
-            </Row>
+            </StyledRow>
           </InnerWrap>
         </Form>
       </FormWrapper>

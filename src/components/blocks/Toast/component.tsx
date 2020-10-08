@@ -1,8 +1,8 @@
 import React, { useEffect, useRef } from 'react';
-import { Col, Row, Typography } from 'antd';
+import { Col } from 'antd';
 import { CheckOutlined, CloseOutlined } from '@ant-design/icons';
 import { Props } from './types';
-import { Wrapper } from './styles';
+import { Wrapper, StyledTypography, StyledRow } from './styles';
 
 const getIcon = (type: 'danger' | 'success') => {
   switch (type) {
@@ -30,12 +30,12 @@ const Toast = ({ type, children, remove }: Props) => {
 
   return (
     <Wrapper type={type}>
-      <Row justify="center" align="middle" gutter={[16, 0]} style={{width: '100%'}}>
+      <StyledRow justify="center" align="middle" gutter={[16, 0]} style={{ width: '100%' }}>
         <Col span={4}>{Icon}</Col>
         <Col span={20}>
-          <Typography style={{ color: '#FFFFFF' }}>{children}</Typography>
+          <StyledTypography>{children}</StyledTypography>
         </Col>
-      </Row>
+      </StyledRow>
     </Wrapper>
   );
 };

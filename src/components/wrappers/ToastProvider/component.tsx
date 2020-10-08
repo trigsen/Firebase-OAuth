@@ -4,9 +4,9 @@ import { createPortal } from 'react-dom';
 import Toast from '@/components/blocks/Toast';
 import { generateID } from '@/utils/helpers/generateID';
 import PopUpService from '@/utils/helpers/PopUpService';
+import { useTranslate } from '@/utils/hooks';
 import { Toasts, Props } from './types';
 import { Wrapper } from './styles';
-import { useTranslate } from '@/utils/hooks';
 
 const ToastProvider = ({ children }: Props) => {
   const [list, setList] = useState<Toasts[]>([]);
