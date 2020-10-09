@@ -30,7 +30,7 @@ const Toast = ({ type, children, remove }: Props) => {
 
   return (
     <Wrapper type={type}>
-      <StyledRow justify="center" align="middle" gutter={[16, 0]} style={{ width: '100%' }}>
+      <StyledRow justify="center" align="middle" gutter={[16, 0]}>
         <Col span={4}>{Icon}</Col>
         <Col span={20}>
           <StyledTypography>{children}</StyledTypography>
