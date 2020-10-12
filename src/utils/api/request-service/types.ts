@@ -1,4 +1,4 @@
 export interface RequestServiceInterface {
-  get: (URL: string) => object;
-  post: (URL: string, headers: object) => object;
+  get: (URL: string) => Promise<unknown>;
+  post: (URL: string, headers: object) => Promise<unknown>;
 }

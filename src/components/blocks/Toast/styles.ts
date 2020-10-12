@@ -26,6 +26,7 @@ export const Wrapper = styled.div`
   margin-top: 10px;
   box-shadow: 0px 0px 5px 3px rgba(0, 0, 0, 0.4);
   z-index: 20;
+  transition: all 0.5s;
 `;
 
 export const StyledTypography = styled(Typography)`
@@ -34,4 +35,8 @@ export const StyledTypography = styled(Typography)`
 
 export const StyledRow = styled(Row)`
   width: 100%;
+`;
+
+export const IconWrapper = styled.div`
+  cursor: pointer;
 `;
