@@ -16,16 +16,8 @@ class RequestService implements RequestServiceInterface {
     return RequestService.instance;
   }
 
-  /**
-   *
-   * @param URL
-   * @param headers
-   *
-   * @returns Object with "value" property.
-   */
   // eslint-disable-next-line class-methods-use-this
   async post(URL: string, body: object, options: object = {}) {
-    let value = {};
     const headers = {
       method: 'POST',
       headers: {
@@ -38,39 +30,23 @@ class RequestService implements RequestServiceInterface {
     try {
       const response = await fetch(URL, headers);
       this.handleStatus(response.status);
-      value = await response.json();
+      return response;
     } catch (error) {
       throw new Error(error.message);
     }
-
-    return {
-      value,
-    };
   }
 
-  /**
-   *
-   * @param URL
-   *
-   * @returns Object with "value" property.
-   */
   // eslint-disable-next-line class-methods-use-this
   async get(URL: string) {
-    let value;
     try {
-      const response = await fetch(URL);
-      value = await response.json();
+      return await fetch(URL);
     } catch (error) {
       throw new Error(error.message);
     }
-
-    return {
-      value,
-    };
   }
 
   // eslint-disable-next-line class-methods-use-this
-  private handleStatus(status: number) {
+  handleStatus(status: number) {
     switch (status) {
       case 400:
         PopUpService.showPopUp(

@@ -28,11 +28,9 @@ function* logIn({ payload: { email, password } }: LogInProps) {
       email,
       password,
     };
-    const { value } = yield call([requester, requester.post], URL, body);
-    if (value.error) {
-      return;
-    }
 
+    const response = yield call([requester, requester.post], URL, body);
+    const value = yield response.json();
     yield put(userLoginSuccess(value));
 
     setItemToLocalStorage(USER_LOCAL_STORAGE, value);

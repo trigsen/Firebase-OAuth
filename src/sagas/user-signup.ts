@@ -35,7 +35,8 @@ function* signUp({
       email,
       password,
     };
-    const { value } = yield call([requester, requester.post], URL, body);
+    const response = yield call([requester, requester.post], URL, body);
+    const value = response.json();
 
     const updateUserURL = `${FIREBASE_URL}/${FIREBASE_UPDATE_PROFILE}?key=${process.env.REACT_APP_API_KEY}`;
     const updatedValues = {

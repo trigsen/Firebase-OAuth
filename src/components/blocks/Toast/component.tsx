@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import { Col } from 'antd';
 import { CheckOutlined, CloseOutlined } from '@ant-design/icons';
 import { Props } from './types';
-import { Wrapper, StyledTypography, StyledRow } from './styles';
+import { Wrapper, StyledTypography, StyledRow, IconWrapper } from './styles';
 
 const getIcon = (type: 'danger' | 'success') => {
   switch (type) {
@@ -23,7 +23,7 @@ const Toast = ({ type, children, remove }: Props) => {
   const Icon = getIcon(type);
 
   useEffect(() => {
-    const timeout = setTimeout(() => ref.current(), 2000);
+    const timeout = setTimeout(() => ref.current(), 5000);
 
     return () => clearTimeout(timeout);
   }, []);
@@ -31,7 +31,7 @@ const Toast = ({ type, children, remove }: Props) => {
   return (
     <Wrapper type={type}>
       <StyledRow justify="center" align="middle" gutter={[16, 0]}>
-        <Col span={4}>{Icon}</Col>
+        <Col span={4} onClick={remove}><IconWrapper>{Icon}</IconWrapper></Col>
         <Col span={20}>
           <StyledTypography>{children}</StyledTypography>
         </Col>
